@@ -65,6 +65,23 @@ const ContactSection = () => {
 
       if (error) throw error;
 
+      // Envoyer l'email de notification
+      try {
+        await supabase.functions.invoke('send-application-notification', {
+          body: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            country: formData.country,
+            profession: formData.profession,
+            message: formData.message,
+          }
+        });
+      } catch (emailError) {
+        console.error("Erreur d'envoi d'email:", emailError);
+        // Continue même si l'email échoue - la candidature est sauvegardée
+      }
+
       toast({
         title: "Message envoyé !",
         description: "Nous vous contacterons dans les 24-48 heures.",
