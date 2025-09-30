@@ -125,7 +125,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-foreground mb-1">Email</h3>
-                  <p className="text-muted-foreground text-sm">contact@evoluez-international.com</p>
+                  <p className="text-muted-foreground text-sm">provise@eu.com</p>
                 </div>
               </div>
             </Card>
@@ -200,7 +200,7 @@ const ContactSection = () => {
                   <Input
                     id="phone"
                     type="tel"
-                    placeholder="+33 6 12 34 56 78"
+                    placeholder="+xx x xx xx xx xx"
                     value={formData.phone}
                     onChange={(e) => handleChange("phone", e.target.value)}
                     required
@@ -226,7 +226,7 @@ const ContactSection = () => {
                 <Label htmlFor="profession">Profession / Secteur d'activité *</Label>
                 <Input
                   id="profession"
-                  placeholder="Ex: Infirmier, Développeur, Ingénieur..."
+                  placeholder="Ex: Infirmier, Ingénieur..."
                   value={formData.profession}
                   onChange={(e) => handleChange("profession", e.target.value)}
                   required
