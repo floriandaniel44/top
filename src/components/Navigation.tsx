@@ -34,7 +34,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <a href="#accueil" className="text-2xl font-bold text-primary">
-            Évoluez International
+           ProVisa
           </a>
 
           {/* Desktop Navigation */}
