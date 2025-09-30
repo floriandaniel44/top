@@ -125,7 +125,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-foreground mb-1">Email</h3>
-                  <p className="text-muted-foreground text-sm">provise@eu.com</p>
+                  <p className="text-muted-foreground text-sm">provisa@eu.com</p>
                 </div>
               </div>
             </Card>
