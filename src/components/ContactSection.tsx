@@ -7,6 +7,17 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
+
+const applicationSchema = z.object({
+  name: z.string().trim().min(2, "Le nom doit contenir au moins 2 caractères").max(100, "Le nom est trop long"),
+  email: z.string().trim().email("Email invalide").max(255, "L'email est trop long"),
+  phone: z.string().trim().min(8, "Numéro de téléphone invalide").max(20, "Numéro de téléphone trop long"),
+  country: z.string().min(1, "Veuillez sélectionner un pays"),
+  profession: z.string().trim().min(2, "La profession doit contenir au moins 2 caractères").max(100, "La profession est trop longue"),
+  message: z.string().trim().min(10, "Le message doit contenir au moins 10 caractères").max(1000, "Le message est trop long")
+});
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -17,14 +28,58 @@ const ContactSection = () => {
     profession: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message envoyé !",
-      description: "Nous vous contacterons dans les 24-48 heures.",
-    });
-    setFormData({ name: "", email: "", phone: "", country: "", profession: "", message: "" });
+    
+    // Validation
+    try {
+      applicationSchema.parse(formData);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Erreur de validation",
+          description: error.errors[0].message,
+          variant: "destructive",
+        });
+        return;
+      }
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('applications')
+        .insert([
+          {
+            nom: formData.name,
+            email: formData.email,
+            telephone: formData.phone,
+            pays: formData.country,
+            profession: formData.profession,
+            message: formData.message,
+          }
+        ]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Message envoyé !",
+        description: "Nous vous contacterons dans les 24-48 heures.",
+      });
+      
+      setFormData({ name: "", email: "", phone: "", country: "", profession: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -173,8 +228,8 @@ const ContactSection = () => {
                 />
               </div>
 
-              <Button type="submit" variant="hero" size="lg" className="w-full">
-                Envoyer ma demande
+              <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande"}
                 <Send size={18} />
               </Button>
 
