@@ -88,7 +88,7 @@ const TestimonialsSection = () => {
                   <p className="font-bold text-foreground">{testimonial.name}</p>
                   <p className="text-sm text-muted-foreground">{testimonial.profession}</p>
                   <p className="text-sm text-accent font-semibold mt-1">
-                    📍 {testimonial.country}
+                      {testimonial.country}
                   </p>
                 </div>
               </div>
