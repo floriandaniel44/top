@@ -46,7 +46,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/20 pt-8 text-center text-sm text-primary-foreground/60">
-          <p>© 2025 Évoluez International. Tous droits réservés.</p>
+          <p>© 2025 ProVisa. Tous droits réservés.</p>
           <div className="flex justify-center gap-6 mt-4">
             <a href="#" className="hover:text-primary-foreground">Mentions légales</a>
             <a href="#" className="hover:text-primary-foreground">Politique de confidentialité</a>
