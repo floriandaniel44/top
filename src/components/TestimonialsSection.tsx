@@ -40,7 +40,7 @@ const TestimonialsSection = () => {
       profession: "Infirmière",
       country: "Belgique",
       image: "👩🏻‍⚕️",
-      rating: 5,
+      rating: 4,
       text: "Une expérience formidable ! Tout a été géré professionnellement et j'ai été informée à chaque étape. Je travaille maintenant dans un hôpital à Anvers et je suis très heureuse."
     },
     {
@@ -48,7 +48,7 @@ const TestimonialsSection = () => {
       profession: "Architecte",
       country: "Suisse",
       image: "👨🏻‍💼",
-      rating: 5,
+      rating: 4,
       text: "Service impeccable et résultats rapides. En 5 mois, j'avais mon visa et j'étais installé à Genève. Le programme offre vraiment ce qu'il promet. Une opportunité à ne pas manquer !"
     }
   ];
