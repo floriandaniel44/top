@@ -31,7 +31,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Email envoyé à vous (l'administrateur)
     const emailResponse = await resend.emails.send({
-      from: "Evoluez International <provisa@eu.com>",
+      from: "Provisa <provisa@eu.com>",
       to: ["legerolt@gmail.com"], // Remplacez par votre vrai email
       subject: `Nouvelle candidature - ${name}`,
       html: `
