@@ -34,14 +34,7 @@ const ProcedureSection = () => {
       doc.text(`${index + 1}. ${doc_item}`, 20, yPosition);
       yPosition += 10;
     });
-    
-    // Note en bas
-    yPosition += 10;
-    doc.setFontSize(10);
-    doc.setTextColor(100);
-    doc.text("Note: Tous les documents doivent être traduits en français ou anglais", 20, yPosition);
-    doc.text("et certifiés conformes par un traducteur agréé.", 20, yPosition + 7);
-    
+     
     // Télécharger
     doc.save("liste-documents-provisa.pdf");
   };
