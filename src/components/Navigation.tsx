@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Shield } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isAdmin } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,6 +55,16 @@ const Navigation = () => {
             <Button variant="hero" size="default" asChild>
               <a href="#contact">Postuler</a>
             </Button>
+            {isAdmin && (
+              <Button 
+                variant="outline" 
+                onClick={() => navigate('/admin')}
+                className="gap-2"
+              >
+                <Shield className="w-4 h-4" />
+                Admin
+              </Button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -78,6 +92,19 @@ const Navigation = () => {
             <Button variant="hero" size="default" className="w-full mt-4" asChild>
               <a href="#contact">Postuler</a>
             </Button>
+            {isAdmin && (
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  navigate('/admin');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full mt-2 gap-2"
+              >
+                <Shield className="w-4 h-4" />
+                Admin
+              </Button>
+            )}
           </div>
         )}
       </div>
