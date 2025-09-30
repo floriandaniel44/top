@@ -41,12 +41,6 @@ const Footer = () => {
               <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 <Twitter size={24} />
               </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                <Linkedin size={24} />
-              </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                <Instagram size={24} />
-              </a>
             </div>
           </div>
         </div>
