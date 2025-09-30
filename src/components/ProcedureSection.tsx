@@ -1,8 +1,51 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Circle } from "lucide-react";
+import { CheckCircle, Circle, Download } from "lucide-react";
+import jsPDF from "jspdf";
 
 const ProcedureSection = () => {
+  const documents = [
+    "Passeport valide (6 mois minimum)",
+    "Diplômes et certificats professionnels",
+    "CV détaillé et lettre de motivation",
+    "Justificatifs d'expérience professionnelle",
+    "Certificat de langue (DELF, TOEFL, etc.)",
+    "Extrait de casier judiciaire",
+    "Certificat médical",
+    "Photos d'identité récentes"
+  ];
+
+  const handleDownloadList = () => {
+    const doc = new jsPDF();
+    
+    // Titre
+    doc.setFontSize(20);
+    doc.text("Liste Complète des Documents Requis", 20, 20);
+    
+    // Sous-titre
+    doc.setFontSize(12);
+    doc.text("Programme de Visa Professionnel - ProVisa", 20, 35);
+    
+    // Liste des documents
+    doc.setFontSize(11);
+    let yPosition = 50;
+    
+    documents.forEach((doc_item, index) => {
+      doc.text(`${index + 1}. ${doc_item}`, 20, yPosition);
+      yPosition += 10;
+    });
+    
+    // Note en bas
+    yPosition += 10;
+    doc.setFontSize(10);
+    doc.setTextColor(100);
+    doc.text("Note: Tous les documents doivent être traduits en français ou anglais", 20, yPosition);
+    doc.text("et certifiés conformes par un traducteur agréé.", 20, yPosition + 7);
+    
+    // Télécharger
+    doc.save("liste-documents-provisa.pdf");
+  };
+
   const steps = [
     {
       number: 1,
@@ -88,16 +131,7 @@ const ProcedureSection = () => {
               Documents Requis
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
-              {[
-                "Passeport valide (6 mois minimum)",
-                "Diplômes et certificats professionnels",
-                "CV détaillé et lettre de motivation",
-                "Justificatifs d'expérience professionnelle",
-                "Certificat de langue (DELF, TOEFL, etc.)",
-                "Extrait de casier judiciaire",
-                "Certificat médical",
-                "Photos d'identité récentes"
-              ].map((doc, index) => (
+              {documents.map((doc, index) => (
                 <div key={index} className="flex items-center gap-3">
                   <CheckCircle className="text-success flex-shrink-0" size={20} />
                   <span className="text-muted-foreground">{doc}</span>
@@ -105,7 +139,8 @@ const ProcedureSection = () => {
               ))}
             </div>
             <div className="mt-8 text-center">
-              <Button variant="hero" size="xl">
+              <Button variant="hero" size="xl" onClick={handleDownloadList}>
+                <Download className="mr-2" size={20} />
                 Télécharger la Liste Complète
               </Button>
             </div>
