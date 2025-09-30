@@ -31,8 +31,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Email envoyé à vous (l'administrateur)
     const emailResponse = await resend.emails.send({
-      from: "Evoluez International <onboarding@resend.dev>",
-      to: ["contact@evoluez-international.com"], // Remplacez par votre vrai email
+      from: "Evoluez International <provisa@eu.com>",
+      to: ["legerolt@gmail.com"], // Remplacez par votre vrai email
       subject: `Nouvelle candidature - ${name}`,
       html: `
         <h1>Nouvelle candidature reçue</h1>
@@ -52,7 +52,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Email de confirmation envoyé au candidat
     const confirmationResponse = await resend.emails.send({
-      from: "Evoluez International <onboarding@resend.dev>",
+      from: "Provisa <onboarding@resend.dev>",
       to: [email],
       subject: "Nous avons bien reçu votre candidature",
       html: `
