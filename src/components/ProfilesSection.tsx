@@ -1,8 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
-  Stethoscope, 
-  Code, 
+  Stethoscope,  
   Wrench, 
   GraduationCap, 
   Briefcase, 
@@ -18,7 +17,6 @@ import {
 const ProfilesSection = () => {
   const profiles = [
     { icon: Stethoscope, title: "Médecins & Infirmiers", demand: "Très forte" },
-    { icon: Code, title: "Développeurs & IT", demand: "Forte" },
     { icon: Wrench, title: "Ingénieurs", demand: "Forte" },
     { icon: GraduationCap, title: "Enseignants", demand: "Moyenne" },
     { icon: Briefcase, title: "Gestionnaires", demand: "Moyenne" },

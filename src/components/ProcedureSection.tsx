@@ -8,7 +8,7 @@ const ProcedureSection = () => {
       number: 1,
       title: "Évaluation Initiale",
       description: "Remplissez notre formulaire en ligne pour évaluer votre éligibilité au programme.",
-      duration: "1-2 jours"
+      duration: "1-3 jours"
     },
     {
       number: 2,
