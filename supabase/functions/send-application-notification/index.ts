@@ -64,7 +64,7 @@ const handler = async (req: Request): Promise<Response> => {
           <li><strong>Profession:</strong> ${profession}</li>
           <li><strong>Pays souhaité:</strong> ${country}</li>
         </ul>
-        <p>À très bientôt,<br>L'équipe Evoluez International</p>
+        <p>À très bientôt,<br>L'équipe Pro-visa</p>
       `,
     });
 
