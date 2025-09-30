@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Star, Quote } from "lucide-react";
+import { Star } from "lucide-react";
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -69,11 +69,9 @@ const TestimonialsSection = () => {
           {testimonials.map((testimonial, index) => (
             <Card 
               key={index}
-              className="p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden"
+              className="p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
             >
-              <Quote className="absolute top-4 right-4 text-accent/20" size={48} />
-              
-              <div className="relative">
+              <div>
                 <div className="text-6xl mb-4">{testimonial.image}</div>
                 
                 <div className="flex gap-1 mb-4">

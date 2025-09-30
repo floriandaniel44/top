@@ -48,8 +48,8 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <Button variant="hero" size="default">
-              Postuler
+            <Button variant="hero" size="default" asChild>
+              <a href="#contact">Postuler</a>
             </Button>
           </div>
 
@@ -75,8 +75,8 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <Button variant="hero" size="default" className="w-full mt-4">
-              Postuler
+            <Button variant="hero" size="default" className="w-full mt-4" asChild>
+              <a href="#contact">Postuler</a>
             </Button>
           </div>
         )}

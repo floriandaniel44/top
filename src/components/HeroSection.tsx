@@ -35,16 +35,19 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-400">
-            <Button variant="accent" size="xl" className="group">
-              Commencer ma procédure
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+            <Button variant="accent" size="xl" className="group" asChild>
+              <a href="#contact">
+                Commencer ma procédure
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
             <Button 
               variant="outline" 
               size="xl"
               className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+              asChild
             >
-              En savoir plus
+              <a href="#apropos">En savoir plus</a>
             </Button>
           </div>
 
