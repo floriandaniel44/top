@@ -10,7 +10,7 @@ import davidNguyen from "@/assets/testimonials/david-nguyen.jpg";
 const TestimonialsSection = () => {
   const testimonials = [
     {
-      name: "Dr. Aminata Diallo",
+      name: "Dr. Maguérith Pichet",
       profession: "Médecin Généraliste",
       country: "France",
       image: aminataDiallo,
@@ -26,7 +26,7 @@ const TestimonialsSection = () => {
       text: "Un processus fluide et transparent du début à la fin. L'équipe a géré tous les aspects administratifs, me permettant de me concentrer sur ma recherche d'emploi. Je travaille maintenant à Bruxelles !"
     },
     {
-      name: "Sophie Kowalski",
+      name: "Sophie Boere",
       profession: "Enseignante",
       country: "Suisse",
       image: sophieKowalski,
@@ -42,7 +42,7 @@ const TestimonialsSection = () => {
       text: "L'équipe a été d'une aide précieuse pour préparer mon dossier et trouver un logement à Paris. Le processus a été plus rapide que prévu et la bourse m'a beaucoup aidé financièrement."
     },
     {
-      name: "Maria Santos",
+      name: "Maria Lahir",
       profession: "Infirmière",
       country: "Belgique",
       image: mariaSantos,
