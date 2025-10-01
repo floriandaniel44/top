@@ -1,5 +1,11 @@
 import { Card } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import aminataDiallo from "@/assets/testimonials/aminata-diallo.jpg";
+import carlosSilva from "@/assets/testimonials/carlos-silva.jpg";
+import sophieKowalski from "@/assets/testimonials/sophie-kowalski.jpg";
+import ahmedHassan from "@/assets/testimonials/ahmed-hassan.jpg";
+import mariaSantos from "@/assets/testimonials/maria-santos.jpg";
+import davidNguyen from "@/assets/testimonials/david-nguyen.jpg";
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -7,7 +13,7 @@ const TestimonialsSection = () => {
       name: "Dr. Aminata Diallo",
       profession: "Médecin Généraliste",
       country: "France",
-      image: "👩🏾‍⚕️",
+      image: aminataDiallo,
       rating: 5,
       text: "Grâce à ce programme, j'ai pu obtenir mon titre de séjour en 4 mois seulement. L'accompagnement a été exceptionnel, et la bourse m'a vraiment aidée à m'installer sereinement à Lyon."
     },
@@ -15,7 +21,7 @@ const TestimonialsSection = () => {
       name: "Carlos Silva",
       profession: "Ingénieur Logiciel",
       country: "Belgique",
-      image: "👨🏽‍💻",
+      image: carlosSilva,
       rating: 5,
       text: "Un processus fluide et transparent du début à la fin. L'équipe a géré tous les aspects administratifs, me permettant de me concentrer sur ma recherche d'emploi. Je travaille maintenant à Bruxelles !"
     },
@@ -23,7 +29,7 @@ const TestimonialsSection = () => {
       name: "Sophie Kowalski",
       profession: "Enseignante",
       country: "Suisse",
-      image: "👩🏼‍🏫",
+      image: sophieKowalski,
       rating: 5,
       text: "Je recommande vivement ce programme. Le soutien personnalisé et les conseils précieux m'ont permis de réaliser mon rêve de vivre et enseigner en Suisse. Merci infiniment !"
     },
@@ -31,7 +37,7 @@ const TestimonialsSection = () => {
       name: "Ahmed Hassan",
       profession: "Chef Cuisinier",
       country: "France",
-      image: "👨🏻‍🍳",
+      image: ahmedHassan,
       rating: 5,
       text: "L'équipe a été d'une aide précieuse pour préparer mon dossier et trouver un logement à Paris. Le processus a été plus rapide que prévu et la bourse m'a beaucoup aidé financièrement."
     },
@@ -39,7 +45,7 @@ const TestimonialsSection = () => {
       name: "Maria Santos",
       profession: "Infirmière",
       country: "Belgique",
-      image: "👩🏻‍⚕️",
+      image: mariaSantos,
       rating: 4,
       text: "Une expérience formidable ! Tout a été géré professionnellement et j'ai été informée à chaque étape. Je travaille maintenant dans un hôpital à Anvers et je suis très heureuse."
     },
@@ -47,7 +53,7 @@ const TestimonialsSection = () => {
       name: "David Nguyen",
       profession: "Architecte",
       country: "Suisse",
-      image: "👨🏻‍💼",
+      image: davidNguyen,
       rating: 4,
       text: "Service impeccable et résultats rapides. En 5 mois, j'avais mon visa et j'étais installé à Genève. Le programme offre vraiment ce qu'il promet. Une opportunité à ne pas manquer !"
     }
@@ -72,7 +78,13 @@ const TestimonialsSection = () => {
               className="p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
             >
               <div>
-                <div className="text-6xl mb-4">{testimonial.image}</div>
+                <div className="mb-4 flex justify-center">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name}
+                    className="w-24 h-24 rounded-full object-cover border-4 border-primary/20"
+                  />
+                </div>
                 
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
