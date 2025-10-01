@@ -31,8 +31,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Email envoyé à vous (l'administrateur)
     const emailResponse = await resend.emails.send({
-      from: "Provisa <provisa@eu.com>",
-      to: ["legerolt@gmail.com"], // Remplacez par votre vrai email
+      from: "ProVisa <provisa@eu.com>",
+      to: ["legerolt@gmail.com"],
       subject: `Nouvelle candidature - ${name}`,
       html: `
         <h1>Nouvelle candidature reçue</h1>
@@ -44,7 +44,7 @@ const handler = async (req: Request): Promise<Response> => {
         <p><strong>Message:</strong></p>
         <p>${message}</p>
         <hr>
-        <p style="color: #666; font-size: 12px;">Cette candidature a été soumise via le formulaire de contact sur votre site.</p>
+        <p style="color: #666; font-size: 12px;">Cette candidature a été soumise via le formulaire de contact ProVisa.</p>
       `,
     });
 
@@ -52,7 +52,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Email de confirmation envoyé au candidat
     const confirmationResponse = await resend.emails.send({
-      from: "Provisa <onboarding@resend.dev>",
+      from: "ProVisa <onboarding@resend.dev>",
       to: [email],
       subject: "Nous avons bien reçu votre candidature",
       html: `
@@ -64,7 +64,7 @@ const handler = async (req: Request): Promise<Response> => {
           <li><strong>Profession:</strong> ${profession}</li>
           <li><strong>Pays souhaité:</strong> ${country}</li>
         </ul>
-        <p>À très bientôt,<br>L'équipe Pro-visa</p>
+        <p>À très bientôt,<br>L'équipe ProVisa</p>
       `,
     });
 
