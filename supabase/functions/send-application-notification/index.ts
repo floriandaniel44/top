@@ -57,7 +57,7 @@ const handler = async (req: Request): Promise<Response> => {
       subject: "Nous avons bien reçu votre candidature",
       html: `
         <h1>Merci ${name} !</h1>
-        <p>Nous avons bien reçu votre candidature pour ${country}.</p>
+        <p>Nous avons bien reçu votre candidature pour la ${country}.</p>
         <p>Notre équipe va l'examiner et vous recontactera dans les 24-48 heures.</p>
         <p><strong>Récapitulatif de votre demande:</strong></p>
         <ul>
