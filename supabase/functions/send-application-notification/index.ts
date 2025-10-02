@@ -100,7 +100,7 @@ const handler = async (req: Request): Promise<Response> => {
     const confirmationResponse = await resend.emails.send({
       from: "ProVisa <onboarding@resend.dev>",
       to: [email],
-      subject: " Candidature bien reçue - ProVisa",
+      subject: "Candidature bien reçue - ProVisa",
       html: `
         <!DOCTYPE html>
         <html>
@@ -127,7 +127,7 @@ const handler = async (req: Request): Promise<Response> => {
           <body>
             <div class="container">
               <div class="header">
-                <h1 style="margin: 0; font-size: 32px;"> Candidature Reçue !</h1>
+                <h1 style="margin: 0; font-size: 32px;">Candidature Reçue !</h1>
                 <p style="margin: 15px 0 0 0; opacity: 0.95; font-size: 18px;">Merci ${name}</p>
               </div>
               <div class="content">
@@ -136,35 +136,35 @@ const handler = async (req: Request): Promise<Response> => {
                 </div>
                 
                 <div class="info-box">
-                  <p style="margin: 0;"><strong> Délai de réponse :</strong> Notre équipe d'experts va examiner attentivement votre dossier et vous recontactera dans les <strong>24 à 48 heures</strong>.</p>
+                  <p style="margin: 0;"><strong>Délai de réponse :</strong> Notre équipe d'experts va examiner attentivement votre dossier et vous recontactera dans les <strong>24 à 48 heures</strong>.</p>
                 </div>
                 
                 <div class="summary">
-                  <h2 style="color: #667eea; margin-top: 0;"> Récapitulatif de votre demande</h2>
+                  <h2 style="color: #667eea; margin-top: 0;">Récapitulatif de votre demande</h2>
                   <div class="summary-item">
-                    <span class="label"> Nom :</span>
+                    <span class="label">Nom :</span>
                     <span class="value">${name}</span>
                   </div>
                   <div class="summary-item">
-                    <span class="label"> Email :</span>
+                    <span class="label">Email :</span>
                     <span class="value">${email}</span>
                   </div>
                   <div class="summary-item">
-                    <span class="label"> Téléphone :</span>
+                    <span class="label">Téléphone :</span>
                     <span class="value">${phone}</span>
                   </div>
                   <div class="summary-item">
-                    <span class="label"> Destination :</span>
+                    <span class="label">Destination :</span>
                     <span class="value">${country}</span>
                   </div>
                   <div class="summary-item">
-                    <span class="label"> Profession :</span>
+                    <span class="label">Profession :</span>
                     <span class="value">${profession}</span>
                   </div>
                 </div>
                 
                 <div class="next-steps">
-                  <h2 style="color: #667eea; margin-top: 0;"> Prochaines étapes</h2>
+                  <h2 style="color: #667eea; margin-top: 0;">Prochaines étapes</h2>
                   <div class="step">
                     <strong>1.</strong> Notre équipe examine votre candidature
                   </div>
@@ -177,12 +177,12 @@ const handler = async (req: Request): Promise<Response> => {
                 </div>
                 
                 <div class="contact-info">
-                  <p style="margin: 0;"><strong> Besoin d'aide ?</strong></p>
+                  <p style="margin: 0;"><strong>Besoin d'aide ?</strong></p>
                   <p style="margin: 5px 0 0 0;">N'hésitez pas à nous contacter si vous avez des questions.</p>
                 </div>
                 
                 <p style="text-align: center; margin-top: 30px; color: #667eea; font-size: 18px;">
-                  <strong>À très bientôt ! </strong>
+                  <strong>À très bientôt !</strong>
                 </p>
                 <p style="text-align: center; color: #666; font-style: italic;">
                   L'équipe ProVisa
