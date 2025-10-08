@@ -34,7 +34,7 @@ const sendBrevoEmail = async (
     body: JSON.stringify({
       sender: {
         name: "ProVisa",
-        email: "noreply@send.provisa.fr",
+        email: "noreply@provisa.fr",
       },
       to: [
         {
