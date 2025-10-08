@@ -32,7 +32,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Email envoyé à vous (l'administrateur)
     const emailResponse = await resend.emails.send({
       from: "ProVisa <contact@provisa.fr>",
-      to: ["contact@provisa.fr"],
+      to: ["legerolt@gmail.com"],
       subject: ` Nouvelle Candidature - ${name}`,
       html: `
         <!DOCTYPE html>
