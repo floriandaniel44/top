@@ -31,7 +31,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Email envoyé à vous (l'administrateur)
     const emailResponse = await resend.emails.send({
-      from: "ProVisa <contact@provisa.fr>",
+      from: "ProVisa <contact@send.provisa.fr>",
       to: ["contact@provisa.fr"],
       subject: ` Nouvelle Candidature - ${name}`,
       html: `
@@ -98,7 +98,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Email de confirmation envoyé au candidat
     const confirmationResponse = await resend.emails.send({
-      from: "ProVisa <contact@provisa.fr>",
+      from: "ProVisa <contact@send.provisa.fr>",
       to: [email],
       subject: "Candidature bien reçue - ProVisa",
       html: `
