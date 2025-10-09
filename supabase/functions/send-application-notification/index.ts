@@ -50,29 +50,29 @@ const handler = async (req: Request): Promise<Response> => {
         <body>
           <div class="container">
             <div class="header">
-              <h1 style="margin: 0; font-size: 28px;">✨ Nouvelle Candidature</h1>
+              <h1 style="margin: 0; font-size: 28px;">Nouvelle candidature</h1>
               <p style="margin: 10px 0 0 0; opacity: 0.9;">Une nouvelle demande d'immigration professionnelle</p>
             </div>
             <div class="content">
               <div class="info-block">
-                <div class="label">👤 Candidat</div>
+                <div class="label">Candidat</div>
                 <div class="value">${name}</div>
                 
-                <div class="label">📧 Email</div>
+                <div class="label">Email</div>
                 <div class="value"><a href="mailto:${email}" style="color: #667eea; text-decoration: none;">${email}</a></div>
                 
-                <div class="label">📱 Téléphone</div>
+                <div class="label">Téléphone</div>
                 <div class="value"><a href="tel:${phone}" style="color: #667eea; text-decoration: none;">${phone}</a></div>
                 
-                <div class="label">🌍 Pays de destination</div>
+                <div class="label">Pays de destination</div>
                 <div class="value">${country}</div>
                 
-                <div class="label">💼 Profession</div>
+                <div class="label">Profession</div>
                 <div class="value">${profession}</div>
               </div>
               
               <div class="message-box">
-                <div class="label">💬 Message du candidat</div>
+                <div class="label">Message du candidat</div>
                 <div class="value">${message}</div>
               </div>
               
@@ -92,7 +92,7 @@ const handler = async (req: Request): Promise<Response> => {
     const adminEmailResponse = await resend.emails.send({
       from: "ProVisa <contact@provisa.fr>",
       to: ["contact@provisa.fr"],
-      subject: `✨ Nouvelle Candidature - ${name}`,
+      subject: `Nouvelle candidature - ${name}`,
       html: adminEmailHtml,
       replyTo: email,
     });
@@ -126,7 +126,7 @@ const handler = async (req: Request): Promise<Response> => {
         <body>
           <div class="container">
             <div class="header">
-              <h1 style="margin: 0; font-size: 32px;">✅ Candidature Reçue !</h1>
+              <h1 style="margin: 0; font-size: 32px;">Candidature bien reçue</h1>
               <p style="margin: 15px 0 0 0; opacity: 0.95; font-size: 18px;">Merci ${name}</p>
             </div>
             <div class="content">
@@ -135,11 +135,11 @@ const handler = async (req: Request): Promise<Response> => {
               </div>
               
               <div class="info-box">
-                <p style="margin: 0;"><strong>⏱️ Délai de réponse :</strong> Notre équipe d'experts va examiner attentivement votre dossier et vous recontactera dans les <strong>24 à 48 heures</strong>.</p>
+                <p style="margin: 0;"><strong>Délai de réponse :</strong> Notre équipe d'experts va examiner attentivement votre dossier et vous recontactera dans les <strong>24 à 48 heures</strong>.</p>
               </div>
               
               <div class="summary">
-                <h2 style="color: #667eea; margin-top: 0;">📋 Récapitulatif de votre demande</h2>
+                <h2 style="color: #667eea; margin-top: 0;">Récapitulatif de votre demande</h2>
                 <div class="summary-item">
                   <span class="label">Nom :</span>
                   <span class="value">${name}</span>
@@ -163,7 +163,7 @@ const handler = async (req: Request): Promise<Response> => {
               </div>
               
               <div class="next-steps">
-                <h2 style="color: #667eea; margin-top: 0;">🚀 Prochaines étapes</h2>
+                <h2 style="color: #667eea; margin-top: 0;">Prochaines étapes</h2>
                 <div class="step">
                   <strong>1.</strong> Notre équipe examine votre candidature
                 </div>
@@ -176,7 +176,7 @@ const handler = async (req: Request): Promise<Response> => {
               </div>
               
               <div class="contact-info">
-                <p style="margin: 0;"><strong>💡 Besoin d'aide ?</strong></p>
+                <p style="margin: 0;"><strong>Besoin d'aide ?</strong></p>
                 <p style="margin: 5px 0 0 0;">N'hésitez pas à nous contacter si vous avez des questions.</p>
               </div>
               
@@ -199,7 +199,7 @@ const handler = async (req: Request): Promise<Response> => {
     const confirmationResponse = await resend.emails.send({
       from: "ProVisa <contact@provisa.fr>",
       to: [email],
-      subject: "✅ Candidature bien reçue - ProVisa",
+      subject: "Candidature bien reçue - ProVisa",
       html: confirmationHtml,
       replyTo: "contact@provisa.fr",
     });
