@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Shield } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,6 +53,7 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
+            <ThemeToggle />
             <Button variant="hero" size="default" asChild>
               <a href="#contact">Postuler</a>
             </Button>
@@ -89,6 +91,9 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
+            <div className="flex items-center justify-center mt-4">
+              <ThemeToggle />
+            </div>
             <Button variant="hero" size="default" className="w-full mt-4" asChild>
               <a href="#contact">Postuler</a>
             </Button>
