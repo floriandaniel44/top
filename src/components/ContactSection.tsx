@@ -35,13 +35,15 @@ const ContactSection = () => {
     country: "",
     profession: "",
     message: "",
+    honeypot: "", // Spam trap field
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formLoadTime] = useState(Date.now()); // Track when form loaded
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validation
+    // Client-side validation
     try {
       applicationSchema.parse(formData);
     } catch (error) {
@@ -58,34 +60,32 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("applications").insert([
-        {
-          nom: formData.name,
+      // Call secure edge function with spam protection fields
+      const { data, error } = await supabase.functions.invoke("submit-application", {
+        body: {
+          name: formData.name,
           email: formData.email,
-          telephone: formData.phone,
-          pays: formData.country,
+          phone: formData.phone,
+          country: formData.country,
           profession: formData.profession,
           message: formData.message,
+          honeypot: formData.honeypot, // Spam trap
+          timestamp: formLoadTime, // Time-based check
         },
-      ]);
+      });
 
-      if (error) throw error;
-
-      // Envoyer l'email de notification
-      try {
-        await supabase.functions.invoke("send-application-notification", {
-          body: {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            country: formData.country,
-            profession: formData.profession,
-            message: formData.message,
-          },
-        });
-      } catch (emailError) {
-        console.error("Erreur d'envoi d'email:", emailError);
-        // Continue même si l'email échoue - la candidature est sauvegardée
+      if (error) {
+        // Handle rate limiting errors
+        if (error.message?.includes("Limite de soumissions") || error.message?.includes("Trop de tentatives")) {
+          toast({
+            title: "Limite atteinte",
+            description: error.message,
+            variant: "destructive",
+          });
+        } else {
+          throw error;
+        }
+        return;
       }
 
       toast({
@@ -93,11 +93,21 @@ const ContactSection = () => {
         description: "Nous vous contacterons dans les 24-48 heures.",
       });
 
-      setFormData({ name: "", email: "", phone: "", country: "", profession: "", message: "" });
-    } catch (error) {
+      // Reset form
+      setFormData({ 
+        name: "", 
+        email: "", 
+        phone: "", 
+        country: "", 
+        profession: "", 
+        message: "",
+        honeypot: ""
+      });
+    } catch (error: any) {
+      console.error("Submission error:", error);
       toast({
         title: "Erreur",
-        description: "Une erreur est survenue. Veuillez réessayer.",
+        description: error.message || "Une erreur est survenue. Veuillez réessayer.",
         variant: "destructive",
       });
     } finally {
@@ -251,6 +261,18 @@ const ContactSection = () => {
                   value={formData.message}
                   onChange={(e) => handleChange("message", e.target.value)}
                   required
+                />
+              </div>
+
+              {/* Honeypot field - hidden from users, visible to bots */}
+              <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                <Input
+                  type="text"
+                  name="honeypot"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.honeypot}
+                  onChange={(e) => handleChange("honeypot", e.target.value)}
                 />
               </div>
 

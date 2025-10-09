@@ -2,3 +2,6 @@ project_id = "upcfjhubadxsppiumoys"
 
 [functions.send-application-notification]
 verify_jwt = false
+
+[functions.submit-application]
+verify_jwt = false

@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      application_rate_limits: {
+        Row: {
+          blocked_until: string | null
+          created_at: string | null
+          first_submission_at: string | null
+          id: string
+          ip_address: string
+          last_submission_at: string | null
+          submission_count: number | null
+        }
+        Insert: {
+          blocked_until?: string | null
+          created_at?: string | null
+          first_submission_at?: string | null
+          id?: string
+          ip_address: string
+          last_submission_at?: string | null
+          submission_count?: number | null
+        }
+        Update: {
+          blocked_until?: string | null
+          created_at?: string | null
+          first_submission_at?: string | null
+          id?: string
+          ip_address?: string
+          last_submission_at?: string | null
+          submission_count?: number | null
+        }
+        Relationships: []
+      }
       applications: {
         Row: {
           created_at: string
