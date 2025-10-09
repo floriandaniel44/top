@@ -90,7 +90,7 @@ const handler = async (req: Request): Promise<Response> => {
     `;
 
     const adminEmailResponse = await resend.emails.send({
-      from: "ProVisa <onboarding@resend.dev>",
+      from: "ProVisa <noreply@provisa.fr>",
       to: ["contact@provisa.fr"],
       subject: `✨ Nouvelle Candidature - ${name}`,
       html: adminEmailHtml,
@@ -197,7 +197,7 @@ const handler = async (req: Request): Promise<Response> => {
     `;
 
     const confirmationResponse = await resend.emails.send({
-      from: "ProVisa <onboarding@resend.dev>",
+      from: "ProVisa <noreply@provisa.fr>",
       to: [email],
       subject: "✅ Candidature bien reçue - ProVisa",
       html: confirmationHtml,
