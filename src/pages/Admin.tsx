@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
-import { ArrowLeft, LogOut, Mail, Phone, MapPin, Briefcase } from 'lucide-react';
+import { ArrowLeft, LogOut, Mail, Phone, MapPin, Briefcase, Download } from 'lucide-react';
 
 interface Application {
   id: string;
@@ -62,6 +62,126 @@ const Admin = () => {
     navigate('/');
   };
 
+  const exportToSQL = async () => {
+    try {
+      toast.info('Exportation des données en cours...');
+
+      // Récupérer toutes les données
+      const { data: applicationsData } = await supabase
+        .from('applications')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      const { data: profilesData } = await supabase
+        .from('profiles')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      const { data: rolesData } = await supabase
+        .from('user_roles')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      const { data: rateLimitsData } = await supabase
+        .from('application_rate_limits')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      // Générer le SQL
+      let sqlContent = `-- Export SQL généré le ${new Date().toISOString()}\n`;
+      sqlContent += `-- Projet: Provisa\n\n`;
+      
+      // Helper pour échapper les chaînes SQL
+      const escapeSql = (value: any): string => {
+        if (value === null || value === undefined) return 'NULL';
+        if (typeof value === 'boolean') return value ? 'true' : 'false';
+        if (typeof value === 'number') return value.toString();
+        if (typeof value === 'string') {
+          return `'${value.replace(/'/g, "''").replace(/\\/g, '\\\\')}'`;
+        }
+        if (value instanceof Date) return `'${value.toISOString()}'`;
+        return `'${JSON.stringify(value).replace(/'/g, "''")}'`;
+      };
+
+      // Export applications
+      if (applicationsData && applicationsData.length > 0) {
+        sqlContent += `-- Table: applications (${applicationsData.length} enregistrements)\n`;
+        applicationsData.forEach(app => {
+          sqlContent += `INSERT INTO public.applications (id, nom, email, telephone, pays, profession, message, status, created_at, updated_at) VALUES (\n`;
+          sqlContent += `  ${escapeSql(app.id)},\n`;
+          sqlContent += `  ${escapeSql(app.nom)},\n`;
+          sqlContent += `  ${escapeSql(app.email)},\n`;
+          sqlContent += `  ${escapeSql(app.telephone)},\n`;
+          sqlContent += `  ${escapeSql(app.pays)},\n`;
+          sqlContent += `  ${escapeSql(app.profession)},\n`;
+          sqlContent += `  ${escapeSql(app.message)},\n`;
+          sqlContent += `  ${escapeSql(app.status)},\n`;
+          sqlContent += `  ${escapeSql(app.created_at)},\n`;
+          sqlContent += `  ${escapeSql(app.updated_at)}\n`;
+          sqlContent += `);\n\n`;
+        });
+      }
+
+      // Export profiles
+      if (profilesData && profilesData.length > 0) {
+        sqlContent += `-- Table: profiles (${profilesData.length} enregistrements)\n`;
+        profilesData.forEach(profile => {
+          sqlContent += `INSERT INTO public.profiles (id, email, created_at, updated_at) VALUES (\n`;
+          sqlContent += `  ${escapeSql(profile.id)},\n`;
+          sqlContent += `  ${escapeSql(profile.email)},\n`;
+          sqlContent += `  ${escapeSql(profile.created_at)},\n`;
+          sqlContent += `  ${escapeSql(profile.updated_at)}\n`;
+          sqlContent += `);\n\n`;
+        });
+      }
+
+      // Export user_roles
+      if (rolesData && rolesData.length > 0) {
+        sqlContent += `-- Table: user_roles (${rolesData.length} enregistrements)\n`;
+        rolesData.forEach(role => {
+          sqlContent += `INSERT INTO public.user_roles (id, user_id, role, created_at) VALUES (\n`;
+          sqlContent += `  ${escapeSql(role.id)},\n`;
+          sqlContent += `  ${escapeSql(role.user_id)},\n`;
+          sqlContent += `  ${escapeSql(role.role)},\n`;
+          sqlContent += `  ${escapeSql(role.created_at)}\n`;
+          sqlContent += `);\n\n`;
+        });
+      }
+
+      // Export application_rate_limits
+      if (rateLimitsData && rateLimitsData.length > 0) {
+        sqlContent += `-- Table: application_rate_limits (${rateLimitsData.length} enregistrements)\n`;
+        rateLimitsData.forEach(limit => {
+          sqlContent += `INSERT INTO public.application_rate_limits (id, ip_address, submission_count, first_submission_at, last_submission_at, blocked_until, created_at) VALUES (\n`;
+          sqlContent += `  ${escapeSql(limit.id)},\n`;
+          sqlContent += `  ${escapeSql(limit.ip_address)},\n`;
+          sqlContent += `  ${escapeSql(limit.submission_count)},\n`;
+          sqlContent += `  ${escapeSql(limit.first_submission_at)},\n`;
+          sqlContent += `  ${escapeSql(limit.last_submission_at)},\n`;
+          sqlContent += `  ${escapeSql(limit.blocked_until)},\n`;
+          sqlContent += `  ${escapeSql(limit.created_at)}\n`;
+          sqlContent += `);\n\n`;
+        });
+      }
+
+      // Télécharger le fichier
+      const blob = new Blob([sqlContent], { type: 'text/plain;charset=utf-8' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `provisa-export-${new Date().toISOString().split('T')[0]}.sql`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      toast.success('Export SQL terminé avec succès!');
+    } catch (error) {
+      console.error('Erreur lors de l\'export:', error);
+      toast.error('Erreur lors de l\'export des données');
+    }
+  };
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'nouveau': return 'bg-blue-500';
@@ -96,14 +216,24 @@ const Admin = () => {
             <ArrowLeft className="w-4 h-4" />
             Retour au site
           </Button>
-          <Button
-            variant="outline"
-            onClick={handleSignOut}
-            className="gap-2"
-          >
-            <LogOut className="w-4 h-4" />
-            Déconnexion
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              variant="default"
+              onClick={exportToSQL}
+              className="gap-2"
+            >
+              <Download className="w-4 h-4" />
+              Exporter SQL
+            </Button>
+            <Button
+              variant="outline"
+              onClick={handleSignOut}
+              className="gap-2"
+            >
+              <LogOut className="w-4 h-4" />
+              Déconnexion
+            </Button>
+          </div>
         </div>
 
         <div className="mb-8">
