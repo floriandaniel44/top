@@ -1,7 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { Resend } from "https://esm.sh/resend@4.0.0";
 
-const BREVO_API_KEY = Deno.env.get("BREVO_API_KEY");
-const BREVO_API_URL = "https://api.brevo.com/v3/smtp/email";
+const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -17,47 +17,6 @@ interface ApplicationNotificationRequest {
   profession: string;
   message: string;
 }
-
-const sendBrevoEmail = async (
-  to: string,
-  subject: string,
-  htmlContent: string,
-  toName?: string
-) => {
-  const response = await fetch(BREVO_API_URL, {
-    method: "POST",
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-      "api-key": BREVO_API_KEY!,
-    },
-    body: JSON.stringify({
-      sender: {
-        name: "ProVisa",
-        email: "noreply@provisa.fr",
-      },
-      to: [
-        {
-          email: to,
-          name: toName || to,
-        },
-      ],
-      replyTo: {
-        email: "contact@provisa.fr",
-        name: "ProVisa Support",
-      },
-      subject,
-      htmlContent,
-    }),
-  });
-
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`Brevo API error: ${error}`);
-  }
-
-  return await response.json();
-};
 
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
@@ -130,14 +89,15 @@ const handler = async (req: Request): Promise<Response> => {
       </html>
     `;
 
-    const emailResponse = await sendBrevoEmail(
-      "contact@provisa.fr",
-      `✨ Nouvelle Candidature - ${name}`,
-      adminEmailHtml,
-      "Admin ProVisa"
-    );
+    const adminEmailResponse = await resend.emails.send({
+      from: "ProVisa <onboarding@resend.dev>",
+      to: ["contact@provisa.fr"],
+      subject: `✨ Nouvelle Candidature - ${name}`,
+      html: adminEmailHtml,
+      replyTo: email,
+    });
 
-    console.log("Admin notification sent successfully:", emailResponse);
+    console.log("Admin notification sent successfully:", adminEmailResponse);
 
     // Email de confirmation envoyé au candidat
     const confirmationHtml = `
@@ -236,18 +196,19 @@ const handler = async (req: Request): Promise<Response> => {
       </html>
     `;
 
-    const confirmationResponse = await sendBrevoEmail(
-      email,
-      "✅ Candidature bien reçue - ProVisa",
-      confirmationHtml,
-      name
-    );
+    const confirmationResponse = await resend.emails.send({
+      from: "ProVisa <onboarding@resend.dev>",
+      to: [email],
+      subject: "✅ Candidature bien reçue - ProVisa",
+      html: confirmationHtml,
+      replyTo: "contact@provisa.fr",
+    });
 
     console.log("Candidate confirmation sent successfully:", confirmationResponse);
 
     return new Response(JSON.stringify({ 
       success: true,
-      adminEmail: emailResponse,
+      adminEmail: adminEmailResponse,
       confirmationEmail: confirmationResponse 
     }), {
       status: 200,
