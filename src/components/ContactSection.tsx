@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 
@@ -142,23 +142,6 @@ const ContactSection = () => {
                   <p className="text-muted-foreground text-sm hover:text-primary transition-colors">
                     contact@provisa.fr
                   </p>
-                </div>
-              </a>
-            </Card>
-
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <a
-                href="https://wa.me/2290157004681"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-4 group"
-              >
-                <div className="bg-accent/10 p-3 rounded-full group-hover:bg-accent/20 transition-colors">
-                  <Phone className="text-accent" size={24} />
-                </div>
-                <div>
-                  <h3 className="font-bold text-foreground mb-1">Téléphone</h3>
-                  <p className="text-muted-foreground text-sm hover:text-accent transition-colors">+33 1 23 45 67 89</p>
                 </div>
               </a>
             </Card>
