@@ -15,8 +15,16 @@ const applicationSchema = z.object({
   email: z.string().trim().email("Email invalide").max(255, "L'email est trop long"),
   phone: z.string().trim().min(8, "Numéro de téléphone invalide").max(20, "Numéro de téléphone trop long"),
   country: z.string().min(1, "Veuillez sélectionner un pays"),
-  profession: z.string().trim().min(2, "La profession doit contenir au moins 2 caractères").max(100, "La profession est trop longue"),
-  message: z.string().trim().min(10, "Le message doit contenir au moins 10 caractères").max(1000, "Le message est trop long")
+  profession: z
+    .string()
+    .trim()
+    .min(2, "La profession doit contenir au moins 2 caractères")
+    .max(100, "La profession est trop longue"),
+  message: z
+    .string()
+    .trim()
+    .min(10, "Le message doit contenir au moins 10 caractères")
+    .max(1000, "Le message est trop long"),
 });
 
 const ContactSection = () => {
@@ -26,13 +34,13 @@ const ContactSection = () => {
     phone: "",
     country: "",
     profession: "",
-    message: ""
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validation
     try {
       applicationSchema.parse(formData);
@@ -50,24 +58,22 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
-        .from('applications')
-        .insert([
-          {
-            nom: formData.name,
-            email: formData.email,
-            telephone: formData.phone,
-            pays: formData.country,
-            profession: formData.profession,
-            message: formData.message,
-          }
-        ]);
+      const { error } = await supabase.from("applications").insert([
+        {
+          nom: formData.name,
+          email: formData.email,
+          telephone: formData.phone,
+          pays: formData.country,
+          profession: formData.profession,
+          message: formData.message,
+        },
+      ]);
 
       if (error) throw error;
 
       // Envoyer l'email de notification
       try {
-        await supabase.functions.invoke('send-application-notification', {
+        await supabase.functions.invoke("send-application-notification", {
           body: {
             name: formData.name,
             email: formData.email,
@@ -75,7 +81,7 @@ const ContactSection = () => {
             country: formData.country,
             profession: formData.profession,
             message: formData.message,
-          }
+          },
         });
       } catch (emailError) {
         console.error("Erreur d'envoi d'email:", emailError);
@@ -86,7 +92,7 @@ const ContactSection = () => {
         title: "Message envoyé !",
         description: "Nous vous contacterons dans les 24-48 heures.",
       });
-      
+
       setFormData({ name: "", email: "", phone: "", country: "", profession: "", message: "" });
     } catch (error) {
       toast({
@@ -100,16 +106,14 @@ const ContactSection = () => {
   };
 
   const handleChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   return (
     <section id="contact" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Contactez-Nous
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Contactez-Nous</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Une question ? Besoin de plus d'informations ? Notre équipe est là pour vous accompagner
           </p>
@@ -125,13 +129,20 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-foreground mb-1">Email</h3>
-                  <p className="text-muted-foreground text-sm hover:text-primary transition-colors">contact@provisa.fr</p>
+                  <p className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                    contact@provisa.fr
+                  </p>
                 </div>
               </a>
             </Card>
 
             <Card className="p-6 hover:shadow-lg transition-shadow">
-              <a href="https://wa.me/33123456789" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
+              <a
+                href="https://wa.me/57004681"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 group"
+              >
                 <div className="bg-accent/10 p-3 rounded-full group-hover:bg-accent/20 transition-colors">
                   <Phone className="text-accent" size={24} />
                 </div>
@@ -166,9 +177,7 @@ const ContactSection = () => {
 
           {/* Contact Form */}
           <Card className="lg:col-span-2 p-8">
-            <h3 className="text-2xl font-bold text-foreground mb-6">
-              Commencez Votre Procédure
-            </h3>
+            <h3 className="text-2xl font-bold text-foreground mb-6">Commencez Votre Procédure</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
