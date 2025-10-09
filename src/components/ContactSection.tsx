@@ -138,7 +138,7 @@ const ContactSection = () => {
 
             <Card className="p-6 hover:shadow-lg transition-shadow">
               <a
-                href="https://wa.me/0157004681"
+                href="https://wa.me/22957004681"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-4 group"
