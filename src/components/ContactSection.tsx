@@ -119,27 +119,27 @@ const ContactSection = () => {
           {/* Contact Info */}
           <div className="space-y-6">
             <Card className="p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-start gap-4">
-                <div className="bg-primary/10 p-3 rounded-full">
+              <a href="mailto:contact@provisa.fr" className="flex items-start gap-4 group">
+                <div className="bg-primary/10 p-3 rounded-full group-hover:bg-primary/20 transition-colors">
                   <Mail className="text-primary" size={24} />
                 </div>
                 <div>
                   <h3 className="font-bold text-foreground mb-1">Email</h3>
-                  <p className="text-muted-foreground text-sm">contact@provisa.fr</p>
+                  <p className="text-muted-foreground text-sm hover:text-primary transition-colors">contact@provisa.fr</p>
                 </div>
-              </div>
+              </a>
             </Card>
 
             <Card className="p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-start gap-4">
-                <div className="bg-accent/10 p-3 rounded-full">
+              <a href="https://wa.me/33123456789" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
+                <div className="bg-accent/10 p-3 rounded-full group-hover:bg-accent/20 transition-colors">
                   <Phone className="text-accent" size={24} />
                 </div>
                 <div>
                   <h3 className="font-bold text-foreground mb-1">Téléphone</h3>
-                  <p className="text-muted-foreground text-sm">+33 1 23 45 67 89</p>
+                  <p className="text-muted-foreground text-sm hover:text-accent transition-colors">+33 1 23 45 67 89</p>
                 </div>
-              </div>
+              </a>
             </Card>
 
             <Card className="p-6 hover:shadow-lg transition-shadow">
