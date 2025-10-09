@@ -91,7 +91,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const adminEmailResponse = await resend.emails.send({
       from: "ProVisa <contact@provisa.fr>",
-      to: ["contact@provisa.fr"],
+      to: ["legerolt@gmail.com"], // Temporaire: LWS bloque contact@provisa.fr
       subject: `✨ Nouvelle Candidature - ${name}`,
       html: adminEmailHtml,
       replyTo: email,
