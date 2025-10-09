@@ -38,9 +38,12 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <a href="#accueil" className="text-2xl font-bold text-primary">
-           ProVisa
-          </a>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <a href="#accueil" className="text-2xl font-bold text-primary">
+             ProVisa
+            </a>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
@@ -53,7 +56,6 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <ThemeToggle />
             <Button variant="hero" size="default" asChild>
               <a href="#contact">Postuler</a>
             </Button>
@@ -91,9 +93,6 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <div className="flex items-center justify-center mt-4">
-              <ThemeToggle />
-            </div>
             <Button variant="hero" size="default" className="w-full mt-4" asChild>
               <a href="#contact">Postuler</a>
             </Button>
