@@ -46,7 +46,7 @@ const ProcedureSection = () => {
       doc.rect(margin / 2, margin / 2, pageW - margin, pageH - margin);
 
       // Try to load logo
-      const logoDataUrl = await fetchImageDataUrl('/opengraph.png');
+      const logoDataUrl = await fetchImageDataUrl('/logo.png');
   const headerY = 100; // moved down to give more space under title
 
   // Header: logo + title
