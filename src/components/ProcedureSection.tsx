@@ -15,28 +15,118 @@ const ProcedureSection = () => {
     "Photos d'identité récentes"
   ];
 
-  const handleDownloadList = () => {
-    const doc = new jsPDF();
-    
-    // Titre
-    doc.setFontSize(20);
-    doc.text("Liste Complète des Documents Requis", 20, 20);
-    
-    // Sous-titre
-    doc.setFontSize(12);
-    doc.text("Programme de Visa Professionnel - ProVisa", 20, 35);
-    
-    // Liste des documents
-    doc.setFontSize(11);
-    let yPosition = 50;
-    
-    documents.forEach((doc_item, index) => {
-      doc.text(`${index + 1}. ${doc_item}`, 20, yPosition);
-      yPosition += 10;
-    });
-     
-    // Télécharger
-    doc.save("liste-documents-provisa.pdf");
+  const handleDownloadList = async () => {
+    try {
+      const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+      const pageW = doc.internal.pageSize.getWidth();
+      const pageH = doc.internal.pageSize.getHeight();
+      const margin = 40;
+
+      // helper: fetch image and convert to dataURL
+      const fetchImageDataUrl = async (url: string) => {
+        try {
+          const res = await fetch(url);
+          if (!res.ok) throw new Error('Image not found');
+          const blob = await res.blob();
+          return await new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(String(reader.result));
+            reader.onerror = reject;
+            reader.readAsDataURL(blob);
+          });
+        } catch (e) {
+          console.warn('Failed to load image for PDF', e);
+          return null;
+        }
+      };
+
+      // Draw colored border frame
+      doc.setDrawColor(6, 182, 212); // teal
+      doc.setLineWidth(8);
+      doc.rect(margin / 2, margin / 2, pageW - margin, pageH - margin);
+
+      // Try to load logo
+      const logoDataUrl = await fetchImageDataUrl('/opengraph.png');
+  const headerY = 100; // moved down to give more space under title
+
+  // Header: logo + title
+      if (logoDataUrl) {
+        try {
+          doc.addImage(logoDataUrl, 'PNG', margin + 6, headerY - 30, 64, 64);
+        } catch (e) {
+          // ignore image errors
+        }
+      }
+
+      // Title
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(22);
+      doc.setTextColor(4, 47, 42);
+      const titleX = margin + (logoDataUrl ? 90 : 6);
+      doc.text('Liste Complète des Documents Requis', titleX, headerY);
+
+      // Subtitle
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(15, 119, 110);
+      doc.text('Programme de Visa Professionnel - ProVisa', titleX, headerY + 18);
+
+      // Draw accent line (moved down a bit)
+      doc.setDrawColor(6, 182, 212);
+      doc.setLineWidth(2);
+      doc.line(margin, headerY + 40, pageW - margin, headerY + 40);
+
+      // List items — centered horizontally and placed lower
+      doc.setFontSize(12);
+      doc.setTextColor(17, 24, 39);
+      let y = headerY + 90; // start lower to center under the header
+      const lineHeight = 18;
+
+      for (let i = 0; i < documents.length; i++) {
+        const text = `${i + 1}. ${documents[i]}`;
+
+        // handle long text wrapping to page width
+        const split = doc.splitTextToSize(text, pageW - margin * 2 - 40);
+
+        // center each wrapped line horizontally
+        for (let j = 0; j < split.length; j++) {
+          const line = split[j];
+          const textWidth = doc.getTextWidth(line);
+          const x = (pageW - textWidth) / 2; // center
+          doc.text(line, x, y);
+          y += lineHeight;
+        }
+
+        // spacing between items
+        y += 6;
+
+        // new page if needed
+        if (y > pageH - margin - 60) {
+          doc.addPage();
+          // redraw border on new page
+          doc.setDrawColor(6, 182, 212);
+          doc.setLineWidth(8);
+          doc.rect(margin / 2, margin / 2, pageW - margin, pageH - margin);
+          // redraw accent line position for new page header area
+          const newHeaderY = margin + 30;
+          doc.setDrawColor(6, 182, 212);
+          doc.setLineWidth(2);
+          doc.line(margin, newHeaderY + 40, pageW - margin, newHeaderY + 40);
+          y = newHeaderY + 90;
+        }
+      }
+
+      // Footer
+      const footerText = 'ProVisa — Document officiel. Veuillez préserver la confidentialité des données.';
+      doc.setFontSize(10);
+      doc.setTextColor(99, 115, 129);
+      doc.text(footerText, margin + 10, pageH - margin - 10);
+
+      // Save
+      doc.save('liste-documents-provisa.pdf');
+    } catch (err) {
+      console.error('Erreur génération PDF:', err);
+    }
   };
 
   const steps = [

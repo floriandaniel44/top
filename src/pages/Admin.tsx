@@ -182,6 +182,121 @@ const Admin = () => {
     }
   };
 
+  // Génère une page imprimable stylée et lance l'impression (ou permet sauvegarde en PDF)
+  const exportToPrintablePDF = () => {
+    try {
+      if (!applications || applications.length === 0) {
+        toast.info('Aucune donnée à exporter');
+        return;
+      }
+
+      const css = `
+        @media print { @page { margin: 18mm } }
+        body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color: #0f172a; background: #ffffff; }
+        .container { max-width: 980px; margin: 18px auto; border-radius: 10px; padding: 0; box-shadow: 0 6px 20px rgba(2,6,23,0.08); }
+        .frame { border-left: 10px solid #06b6d4; border-right: 10px solid #06b6d4; border-top: 4px solid #06b6d4; border-bottom: 4px solid #06b6d4; border-radius: 10px; padding: 20px; }
+        .header { display:flex; justify-content:space-between; align-items:center; gap:12px; padding-bottom:12px; border-bottom: 1px dashed rgba(6,182,212,0.15); }
+        .brand { display:flex; align-items:center; gap:16px; }
+        .brand img { height:64px; width:64px; object-fit:cover; border-radius:8px; box-shadow: 0 2px 8px rgba(2,6,23,0.06); }
+        .title { font-size:22px; font-weight:800; color:#064e3b; letter-spacing:0.2px; }
+        .subtitle { color:#0f766e; font-size:13px; margin-top:4px; }
+        .meta { color:#475569; font-size:12px; text-align:right; }
+        table { width:100%; border-collapse:collapse; margin-top:16px; background:#fff; }
+        th, td { border:1px solid rgba(6,182,212,0.12); padding:12px 10px; text-align:left; font-size:13px; vertical-align:middle; }
+        th { background: linear-gradient(90deg,#06b6d4,#34d399); color:#042f2a; font-weight:700; }
+        tbody tr td { background: linear-gradient(180deg, rgba(255,255,255,0.0), rgba(247,255,253,0.6)); }
+        tbody tr:nth-child(odd) td { background:#ffffff; }
+        tbody tr:nth-child(even) td { background:#fbfffe; }
+        .footer { margin-top:18px; font-size:12px; color:#475569; border-top:1px solid rgba(2,6,23,0.04); padding-top:12px; }
+      `;
+
+      const rows = applications.map(a => `
+        <tr>
+          <td>${escapeHtml(a.nom || '')}</td>
+          <td>${escapeHtml(a.email || '')}</td>
+          <td>${escapeHtml(a.telephone || '')}</td>
+          <td>${escapeHtml(a.pays || '')}</td>
+          <td>${escapeHtml(a.profession || '')}</td>
+          <td>${escapeHtml(a.status || '')}</td>
+          <td>${new Date(a.created_at).toLocaleString('fr-FR')}</td>
+        </tr>
+      `).join('\n');
+
+      const html = `
+        <!doctype html>
+        <html>
+          <head>
+            <meta charset="utf-8" />
+            <title>Export - Candidatures</title>
+            <style>${css}</style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="frame">
+                <div class="header">
+                  <div class="brand">
+                    <img src="/opengraph.png" alt="Provisa" />
+                    <div>
+                      <div class="title">Provisa</div>
+                      <div class="subtitle">Liste des candidatures reçues — Tableau d'administration</div>
+                    </div>
+                  </div>
+                  <div class="meta">
+                    <div>Exporté le ${new Date().toLocaleString('fr-FR')}</div>
+                    <div style="margin-top:6px;font-weight:700;font-size:18px;color:#065f46">Total: ${applications.length}</div>
+                  </div>
+                </div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Nom</th>
+                      <th>Email</th>
+                      <th>Téléphone</th>
+                      <th>Pays</th>
+                      <th>Profession</th>
+                      <th>Statut</th>
+                      <th>Reçu le</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${rows}
+                  </tbody>
+                </table>
+
+                <div class="footer">Provisa — Document généré depuis le tableau de bord administrateur. Confidentialité: Ne pas partager sans autorisation.</div>
+              </div>
+            </div>
+          </body>
+        </html>
+      `;
+
+      const w = window.open('', '_blank', 'noopener');
+      if (!w) {
+        toast.error('Impossible d\'ouvrir la fenêtre d\'export');
+        return;
+      }
+      w.document.open();
+      w.document.write(html);
+      w.document.close();
+      w.focus();
+      setTimeout(() => w.print(), 600);
+
+    } catch (err) {
+      console.error('export printable error', err);
+      toast.error('Erreur lors de la génération du document imprimable');
+    }
+  };
+
+  const escapeHtml = (unsafe: string) => {
+    return unsafe
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  };
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'nouveau': return 'bg-blue-500';
@@ -224,6 +339,14 @@ const Admin = () => {
             >
               <Download className="w-4 h-4" />
               Exporter SQL
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={exportToPrintablePDF}
+              className="gap-2"
+            >
+              <Download className="w-4 h-4" />
+              Télécharger (PDF)
             </Button>
             <Button
               variant="outline"
