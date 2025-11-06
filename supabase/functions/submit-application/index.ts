@@ -52,9 +52,15 @@ const validateInput = (data: ApplicationRequest): { valid: boolean; error?: stri
     return { valid: false, error: "Numéro de téléphone invalide" };
   }
 
-  // Validate country
+  // Validate country (normalize accents and case so frontend variations match)
+  const normalize = (s: string) =>
+    s
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+
   const validCountries = ["france", "belgique", "suisse", "indecis"];
-  if (!data.country || !validCountries.includes(data.country.toLowerCase())) {
+  if (!data.country || !validCountries.includes(normalize(data.country))) {
     return { valid: false, error: "Pays invalide" };
   }
 
@@ -100,6 +106,11 @@ const handler = async (req: Request): Promise<Response> => {
   );
 
   const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+
+  // Debug: log presence of critical env vars (do NOT log secrets themselves)
+  console.log("ENV: SUPABASE_URL set:", !!Deno.env.get("SUPABASE_URL"));
+  console.log("ENV: SUPABASE_SERVICE_ROLE_KEY set:", !!Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"));
+  console.log("ENV: RESEND_API_KEY set:", !!Deno.env.get("RESEND_API_KEY"));
 
   try {
     // Get client IP for rate limiting
