@@ -100,17 +100,18 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  const supabase = createClient(
-    Deno.env.get("SUPABASE_URL") ?? "",
-    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
-  );
+  // Read env vars with fallbacks because Dashboard/CLI may block names starting with SUPABASE_
+  const projectUrl = Deno.env.get("SUPABASE_URL") ?? Deno.env.get("PROJECT_URL") ?? Deno.env.get("PROJECT_SUPABASE_URL") ?? "";
+  const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? Deno.env.get("SERVICE_ROLE_KEY") ?? Deno.env.get("SERVICE_ROLE") ?? "";
+  const resendApiKey = Deno.env.get("RESEND_API_KEY") ?? Deno.env.get("RESEND_KEY") ?? "";
 
-  const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+  const supabase = createClient(projectUrl, serviceRoleKey);
+  const resend = new Resend(resendApiKey);
 
   // Debug: log presence of critical env vars (do NOT log secrets themselves)
-  console.log("ENV: SUPABASE_URL set:", !!Deno.env.get("SUPABASE_URL"));
-  console.log("ENV: SUPABASE_SERVICE_ROLE_KEY set:", !!Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"));
-  console.log("ENV: RESEND_API_KEY set:", !!Deno.env.get("RESEND_API_KEY"));
+  console.log("ENV: projectUrl set:", !!projectUrl);
+  console.log("ENV: serviceRoleKey set:", !!serviceRoleKey);
+  console.log("ENV: resendApiKey set:", !!resendApiKey);
 
   try {
     // Get client IP for rate limiting
@@ -130,7 +131,7 @@ const handler = async (req: Request): Promise<Response> => {
         JSON.stringify({ error: validation.error }),
         {
           status: 400,
-          headers: { "Content-Type": "application/json", ...corsHeaders },
+          headers: { "Content-Type": "application/json; charset=utf-8", ...corsHeaders },
         }
       );
     }
@@ -302,13 +303,14 @@ const handler = async (req: Request): Promise<Response> => {
         </html>
       `;
 
-      await resend.emails.send({
+      const adminResp = await resend.emails.send({
         from: "ProVisa <contact@provisa.fr>",
         to: ["contact@provisa.fr"],
         subject: `Nouvelle candidature - ${data.name}`,
         html: adminEmailHtml,
         replyTo: data.email,
       });
+      console.log("Resend admin response:", adminResp);
 
       // Confirmation email to candidate
       const confirmationHtml = `
@@ -407,13 +409,14 @@ const handler = async (req: Request): Promise<Response> => {
         </html>
       `;
 
-      await resend.emails.send({
+      const confirmResp = await resend.emails.send({
         from: "ProVisa <contact@provisa.fr>",
         to: [data.email],
         subject: "Candidature bien reçue - ProVisa",
         html: confirmationHtml,
         replyTo: "contact@provisa.fr",
       });
+      console.log("Resend confirmation response:", confirmResp);
 
       console.log("Notification emails sent successfully");
     } catch (emailError) {
@@ -429,7 +432,7 @@ const handler = async (req: Request): Promise<Response> => {
       {
         status: 200,
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json; charset=utf-8",
           ...corsHeaders,
         },
       }
@@ -440,7 +443,7 @@ const handler = async (req: Request): Promise<Response> => {
       JSON.stringify({ error: error.message || "Une erreur est survenue" }),
       {
         status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
+        headers: { "Content-Type": "application/json; charset=utf-8", ...corsHeaders },
       }
     );
   }

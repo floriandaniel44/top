@@ -60,6 +60,9 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
+      // Debug log: endpoint and key presence
+      console.log("Submitting application to Supabase function", import.meta.env.VITE_SUPABASE_URL);
+
       // Call secure edge function with spam protection fields
       const { data, error } = await supabase.functions.invoke("submit-application", {
         body: {
@@ -75,6 +78,8 @@ const ContactSection = () => {
       });
 
       if (error) {
+        console.error("Supabase functions.invoke error:", error);
+
         // Handle rate limiting errors
         if (error.message?.includes("Limite de soumissions") || error.message?.includes("Trop de tentatives")) {
           toast({
@@ -82,9 +87,49 @@ const ContactSection = () => {
             description: error.message,
             variant: "destructive",
           });
-        } else {
-          throw error;
+          setIsSubmitting(false);
+          return;
         }
+
+        // Fallback: try direct fetch to inspect HTTP status + body (useful to disambiguate DNS/CORS/HTTP errors)
+        try {
+          const res = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-application`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "apikey": import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
+              "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string}`,
+            },
+            body: JSON.stringify({
+              name: formData.name,
+              email: formData.email,
+              phone: formData.phone,
+              country: formData.country,
+              profession: formData.profession,
+              message: formData.message,
+              honeypot: formData.honeypot,
+              timestamp: formLoadTime,
+            }),
+          });
+
+          const text = await res.text();
+          console.error("Fallback fetch status:", res.status, "body:", text);
+
+          toast({
+            title: "Erreur de soumission",
+            description: `Erreur HTTP ${res.status} — voir console pour plus de détails`,
+            variant: "destructive",
+          });
+        } catch (fetchErr) {
+          console.error("Fallback fetch error:", fetchErr);
+          toast({
+            title: "Erreur réseau",
+            description: "Impossible de contacter la fonction. Vérifiez votre connexion ou le déploiement de la fonction.",
+            variant: "destructive",
+          });
+        }
+
+        setIsSubmitting(false);
         return;
       }
 
@@ -94,20 +139,20 @@ const ContactSection = () => {
       });
 
       // Reset form
-      setFormData({ 
-        name: "", 
-        email: "", 
-        phone: "", 
-        country: "", 
-        profession: "", 
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        country: "",
+        profession: "",
         message: "",
-        honeypot: ""
+        honeypot: "",
       });
     } catch (error: any) {
       console.error("Submission error:", error);
       toast({
         title: "Erreur",
-        description: error.message || "Une erreur est survenue. Veuillez réessayer.",
+        description: error?.message || "Une erreur est survenue. Veuillez réessayer.",
         variant: "destructive",
       });
     } finally {
