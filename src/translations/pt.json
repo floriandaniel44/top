@@ -1,0 +1,289 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "profiles": "Perfis",
+    "benefits": "Benefícios",
+    "procedure": "Procedimento",
+    "faq": "Perguntas Frequentes",
+    "testimonials": "Depoimentos",
+    "contact": "Contato",
+    "apply": "Candidatar-se",
+    "admin": "Admin"
+  },
+  "hero": {
+    "badge": "Programa Internacional",
+    "title": "ProVisa",
+    "subtitle": "Obtenha seu visto profissional e bolsa internacional para a França, Bélgica ou Suíça. Acompanhamos profissionais qualificados em seu projeto de expatriação.",
+    "cta_start": "Iniciar meu procedimento",
+    "cta_learn": "Saiba mais",
+    "stat_countries": "Países parceiros",
+    "stat_professions": "Profissões",
+    "stat_support": "Acompanhamento"
+  },
+  "about": {
+    "title": "Sobre o Programa",
+    "subtitle": "Nosso programa permite que você obtenha uma autorização de residência profissional e uma bolsa internacional para desenvolver sua carreira na França, Bélgica ou Suíça.",
+    "mission_title": "Nossa Missão",
+    "mission_desc": "Facilitar o acesso a oportunidades profissionais na Europa para talentos qualificados de todo o mundo.",
+    "profiles_title": "Perfis Alvo",
+    "profiles_desc": "Apoiamos profissionais qualificados em mais de 15 setores com alta demanda na Europa.",
+    "excellence_title": "Excelência",
+    "excellence_desc": "Acompanhamento personalizado e profissional em cada etapa do seu visto e processo de instalação.",
+    "why_title": "Por que este Programa?",
+    "why_p1": "A Europa enfrenta uma escassez de talentos qualificados em muitos setores. Este programa foi criado para facilitar la mobilidade de profissionais competentes que desejam contribuir para o desenvolvimento econômico europeu.",
+    "why_p2": "Ao participar deste programa, você se beneficia de um caminho simplificado para obter seu visto profissional, bem como de uma bolsa para facilitar sua instalação.",
+    "partners_title": "Países Parceiros"
+  },
+  "profiles": {
+    "title": "Perfis Relevantes",
+    "subtitle": "O programa destina-se a profissionais qualificados em setores com elevada procura na Europa. Descubra se o seu perfil é elegível.",
+    "demand": {
+      "very_high": "Muito alta",
+      "high": "Alta",
+      "medium": "Média"
+    },
+    "list": {
+      "docs": "Médicos e Enfermeiros",
+      "engineers": "Engenheiros",
+      "teachers": "Professores",
+      "managers": "Gestores",
+      "social": "Trabalhadores Sociais",
+      "accountants": "Contabilistas",
+      "architects": "Arquitetos",
+      "chefs": "Chefes de Cozinha",
+      "logistics": "Logísticos",
+      "designers": "Designers",
+      "researchers": "Investigadores"
+    },
+    "eligibility": {
+      "title": "Critérios de Elegibilidade",
+      "c1": "Diploma ou certificação profissional reconhecida",
+      "c2": "Pelo menos 2 anos de experiência profissional",
+      "c3": "Nível de língua B1 mínimo (francês, inglês ou alemão)",
+      "c4": "Idade entre 21 e 45 anos",
+      "c5": "Registo criminal limpo",
+      "c6": "Motivação e projeto profissional claro"
+    }
+  },
+  "benefits": {
+    "title": "Benefícios do Programa",
+    "subtitle": "Apoio global para o sucesso do seu projeto de expatriação profissional com tranquilidade.",
+    "residence": {
+      "title": "Título de Residência",
+      "desc": "Autorização de trabalho válida por 3 anos, renovável, permitindo-lhe viver e trabalhar legalmente na Europa."
+    },
+    "grant": {
+      "title": "Bolsa Internacional",
+      "desc": "Ajuda financeira de 5.000€ a 15.000€ para facilitar a sua instalação e os primeiros meses no país."
+    },
+    "support": {
+      "title": "Apoio Completo",
+      "desc": "Apoio personalizado em cada etapa: candidatura, procedimentos administrativos, procura de alojamento."
+    },
+    "housing": {
+      "title": "Ajuda ao Alojamento",
+      "desc": "Assistência na procura de alojamento adaptado às suas necessidades antes da sua chegada ao país de acolhimento."
+    },
+    "travel": {
+      "title": "Facilitação de Viagem",
+      "desc": "Aconselhamento sobre passagens aéreas, transporte de bens pessoais e formalidades alfandegárias."
+    },
+    "insurance": {
+      "title": "Proteção Social",
+      "desc": "Acesso ao sistema de segurança social e de seguros do país de acolhimento a partir da sua chegada."
+    },
+    "why": {
+      "title": "Porquê Escolher o Nosso Programa?",
+      "desc": "Simplificamos os procedimentos complexos de imigração profissional e oferecemos-lhe as melhores hipóteses de sucesso graças à nossa experiência e rede de parceiros.",
+      "rate": "Taxa de aceitação",
+      "time": "Meses de processamento",
+      "support": "Suporte disponível"
+    }
+  },
+  "procedure": {
+    "title": "Procedimento de Candidatura",
+    "subtitle": "Um processo claro e estruturado para maximizar as suas hipóteses de sucesso",
+    "steps": {
+      "s1": {
+        "title": "Avaliação Inicial",
+        "desc": "Preencha o nosso formulário online para avaliar a sua elegibilidade para o programa.",
+        "duration": "1-3 dias"
+      },
+      "s2": {
+        "title": "Preparação do Dossiê",
+        "desc": "A nossa equipa orienta-o na preparação de todos os documentos necessários.",
+        "duration": "2-3 semanas"
+      },
+      "s3": {
+        "title": "Submissão do Pedido",
+        "desc": "Submetemos o seu dossiê completo às autoridades competentes do país escolhido.",
+        "duration": "1 semana"
+      },
+      "s4": {
+        "title": "Processamento Administrativo",
+        "desc": "As autoridades examinam o seu pedido. Asseguramos o acompanhamento regular.",
+        "duration": "2-4 meses"
+      },
+      "s5": {
+        "title": "Decisão e Visto",
+        "desc": "Receção da decisão e emissão do seu título de residência profissional.",
+        "duration": "1-2 semanas"
+      },
+      "s6": {
+        "title": "Preparação para a Partida",
+        "desc": "Apoio para alojamento, viagem e instalação no seu novo país.",
+        "duration": "2-4 semanas"
+      }
+    },
+    "docs": {
+      "title": "Documentos Necessários",
+      "download": "Descarregar a Lista Completa",
+      "list": {
+        "passport": "Passaporte válido (mínimo 6 meses)",
+        "diplomas": "Diplomas e certificados profissionais",
+        "cv": "Currículo detalhado e carta de motivação",
+        "experience": "Comprovativos de experiência profissional",
+        "language": "Certificado de língua (DELF, TOEFL, etc.)",
+        "criminal": "Registo criminal atualizado",
+        "medical": "Certificado médico",
+        "photos": "Fotos de identidade recentes"
+      },
+      "pdf": {
+        "title": "Lista Completa de Documentos Necessários",
+        "program": "Programa de Visto Profissional - ProVisa",
+        "welcome": "Bem-vindo ao programa ProVisa !",
+        "intro1": "Estamos encantados por acompanhá-lo no seu projeto de mobilidade profissional.",
+        "intro2": "Este programa foi concebido para lhe oferecer um apoio estruturado, humano e eficaz rumo ao seu novo destino.",
+        "intro3": "Para garantir o bom desenrolar da sua candidatura, convidamo-lo a preparar cuidadosamente os seguintes documentos.",
+        "intro4": "Cada peça é essencial para a análise do seu dossiê e para o sucesso do seu pedido de visto.",
+        "footer": "ProVisa — Documento oficial. Por favor, mantenha a confidencialidade dos dados.",
+        "filename": "lista-documentos-provisa"
+      }
+    }
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "subtitle": "Encontre respostas às perguntas mais comuns sobre o programa",
+    "q1": {
+      "q": "Quem pode participar neste programa?",
+      "a": "O programa destina-se a profissionais qualificados entre os 21 e os 45 anos, com um diploma reconhecido e pelo menos 2 anos de experiência na sua área. Os setores prioritários incluem saúde, TI, engenharia e ensino."
+    },
+    "q2": {
+      "q": "Quanto custa participar no programa?",
+      "a": "As taxas de participação variam de acordo com o país escolhido e a sua situação. Incluem taxas administrativas, apoio personalizado e procedimentos consulares. Contacte-nos para um orçamento personalizado. A bolsa internacional que receberá cobre amplamente estas taxas."
+    },
+    "q3": {
+      "q": "Quanto tempo demora o processo completo?",
+      "a": "Em média, o processo completo demora entre 3 a 6 meses, desde a submissão da candidatura até à obtenção do visto. Este prazo pode variar conforme o país e a época do ano."
+    },
+    "q4": {
+      "q": "Posso escolher o país de destino?",
+      "a": "Sim, pode indicar as suas preferências entre França, Bélgica e Suíça. Aconselhá-lo-emos sobre o país mais adequado ao seu perfil e objetivos profissionais."
+    },
+    "q5": {
+      "q": "O título de residência é renovável?",
+      "a": "Sim, o título de residência inicial é geralmente válido por 3 anos e pode ser renovado se mantiver uma atividade profissional no país de acolhimento. Após 5 anos, poderá requerer o título de residente permanente."
+    },
+    "q6": {
+      "q": "Posso vir com a minha família?",
+      "a": "Sim, o reagrupamento familiar é possível. O seu cônjuge e filhos podem acompanhá-lo ou juntar-se a si mais tarde. Aplicam-se condições específicas por país."
+    },
+    "q7": {
+      "q": "O que acontece se o meu pedido for recusado?",
+      "a": "Em caso de recusa, analisamos os motivos e propomos um plano de ação. Geralmente pode recorrer ou submeter um novo pedido após corrigir os pontos problemáticos."
+    },
+    "q8": {
+      "q": "Preciso de já ter uma oferta de emprego?",
+      "a": "Não, este programa não requer uma oferta de emprego prévia. No entanto, ter contactos profissionais ou pistas no país de acolhimento pode reforçar o seu dossiê."
+    }
+  },
+  "testimonials": {
+    "title": "Histórias de Sucesso",
+    "subtitle": "Descubra as histórias inspiradoras de profissionais que concluíram com sucesso o seu projeto de expatriação",
+    "professions": {
+      "doctor": "Médico de Clínica Geral",
+      "engineer": "Engenheiro de Software",
+      "teacher": "Professora",
+      "chef": "Chefe de Cozinha",
+      "nurse": "Enfermeira",
+      "architect": "Arquiteto"
+    },
+    "list": {
+      "t1": {
+        "text": "Graças a este programa, consegui obter o meu título de residência em apenas 4 meses. O apoio foi excecional e a bolsa ajudou-me imenso a instalar-me tranquilamente em Lyon."
+      },
+      "t2": {
+        "text": "Um processo fluido e transparente do início ao fim. A equipa geriu todos os aspetos administrativos, permitindo-me focar na procura de emprego. Já estou a trabalhar em Bruxelas!"
+      },
+      "t3": {
+        "text": "Recomendo vivamente este programa. O apoio personalizado e os conselhos valiosos permitiram-me realizar o meu sonho de viver e ensinar na Suíça. Muito obrigada!"
+      },
+      "t4": {
+        "text": "A equipa foi uma grande ajuda na preparação do meu dossiê e na procura de alojamento em Paris. O processo foi mais rápido do que o esperado e a bolsa ajudou-me muito financeiramente."
+      },
+      "t5": {
+        "text": "Uma experiência fantástica! Tudo foi gerido profissionalmente e fui informada em cada etapa. Agora trabalho num hospital em Antuérpia e estou muito feliz."
+      },
+      "t6": {
+        "text": "Serviço impecável e resultados rápidos. Em 5 meses, tinha o meu visto e estava instalado em Genebra. O programa realmente oferece o que promete. Uma oportunidade a não perder!"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contacte-nos",
+    "subtitle": "Uma dúvida? Precisa de mais informações? A nossa equipa está aqui para o apoiar",
+    "info": {
+      "email": "Email",
+      "office": "Escritórios",
+      "hours": {
+        "title": "Horário de Funcionamento",
+        "week": "Segunda - Sexta: 9h - 18h",
+        "sat": "Sábado: 10h - 14h",
+        "sun": "Domingo: Fechado"
+      }
+    },
+    "form": {
+      "title": "Inicie o Seu Procedimento",
+      "name": "Nome completo *",
+      "email": "Email *",
+      "phone": "Telefone *",
+      "country": "País pretendido *",
+      "country_placeholder": "Selecione um país",
+      "countries": {
+        "fr": "França",
+        "be": "Bélgica",
+        "ch": "Suíça",
+        "undecided": "Ainda não decidido"
+      },
+      "profession": "Profissão / Setor *",
+      "profession_placeholder": "Ex: Enfermeiro, Engenheiro...",
+      "message": "Mensagem *",
+      "message_placeholder": "Conte-nos sobre o seu projeto e as suas dúvidas...",
+      "submit": "Enviar o meu pedido",
+      "submitting": "A enviar...",
+      "consent": "Ao submeter este formulário, aceita ser contactado pela nossa equipa."
+    },
+    "messages": {
+      "success_title": "Mensagem enviada!",
+      "success_desc": "Contactá-lo-emos dentro de 24-48 horas.",
+      "error_title": "Erro",
+      "validation_error": "Erro de validação",
+      "limit_error": "Limite atingido",
+      "network_error": "Erro de rede",
+      "network_desc": "Incapaz de contactar a função. Verifique a sua ligação ou a implementação da função."
+    }
+  },
+  "footer": {
+    "desc": "O seu parceiro para uma carreira internacional de sucesso na Europa.",
+    "program": "Programa",
+    "resources": "Recursos",
+    "follow": "Siga-nos",
+    "rights": "© 2025 ProVisa. Todos os direitos reservados.",
+    "links": {
+      "legal": "Menções legais",
+      "privacy": "Política de privacidade",
+      "terms": "Termos de utilização"
+    }
+  }
+}

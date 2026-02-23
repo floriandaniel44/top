@@ -1,42 +1,44 @@
 import { Card } from "@/components/ui/card";
 import { FileText, DollarSign, HandHeart, Home, Plane, Shield } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const BenefitsSection = () => {
+  const { t } = useTranslation();
   const benefits = [
     {
       icon: FileText,
-      title: "Titre de Séjour",
-      description: "Permis de travail valable 3 ans, renouvelable, vous permettant de vivre et travailler légalement en Europe.",
+      title: t("benefits.residence.title"),
+      description: t("benefits.residence.desc"),
       color: "bg-primary/10"
     },
     {
       icon: DollarSign,
-      title: "Bourse Internationale",
-      description: "Aide financière de 5 000€ à 15 000€ pour faciliter votre installation et vos premiers mois sur place.",
+      title: t("benefits.grant.title"),
+      description: t("benefits.grant.desc"),
       color: "bg-accent/10"
     },
     {
       icon: HandHeart,
-      title: "Accompagnement Complet",
-      description: "Support personnalisé à chaque étape : dossier, démarches administratives, recherche de logement.",
+      title: t("benefits.support.title"),
+      description: t("benefits.support.desc"),
       color: "bg-success/10"
     },
     {
       icon: Home,
-      title: "Aide au Logement",
-      description: "Assistance pour trouver un logement adapté à vos besoins avant votre arrivée dans le pays d'accueil.",
+      title: t("benefits.housing.title"),
+      description: t("benefits.housing.desc"),
       color: "bg-primary/10"
     },
     {
       icon: Plane,
-      title: "Facilitation de Voyage",
-      description: "Conseils sur les billets d'avion, transport de biens personnels et formalités douanières.",
+      title: t("benefits.travel.title"),
+      description: t("benefits.travel.desc"),
       color: "bg-accent/10"
     },
     {
       icon: Shield,
-      title: "Protection Sociale",
-      description: "Accès au système de sécurité sociale et d'assurance du pays d'accueil dès votre arrivée.",
+      title: t("benefits.insurance.title"),
+      description: t("benefits.insurance.desc"),
       color: "bg-success/10"
     }
   ];
@@ -46,10 +48,10 @@ const BenefitsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Avantages du Programme
+            {t("benefits.title")}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Un accompagnement global pour réussir votre projet d'expatriation professionnelle en toute sérénité.
+            {t("benefits.subtitle")}
           </p>
         </div>
 
@@ -71,24 +73,23 @@ const BenefitsSection = () => {
         <Card className="mt-16 p-8 md:p-12 bg-gradient-to-r from-primary to-primary-glow text-primary-foreground">
           <div className="text-center">
             <h3 className="text-3xl md:text-4xl font-bold mb-6">
-              Pourquoi Choisir Notre Programme ?
+              {t("benefits.why.title")}
             </h3>
             <p className="text-xl mb-8 max-w-3xl mx-auto opacity-95">
-              Nous simplifions les démarches complexes d'immigration professionnelle et vous offrons 
-              les meilleures chances de réussite grâce à notre expertise et notre réseau de partenaires.
+              {t("benefits.why.desc")}
             </p>
             <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div>
                 <div className="text-5xl font-bold mb-2 text-accent">95%</div>
-                <div className="text-lg opacity-90">Taux d'acceptation</div>
+                <div className="text-lg opacity-90">{t("benefits.why.rate")}</div>
               </div>
               <div>
                 <div className="text-5xl font-bold mb-2 text-accent">3-6</div>
-                <div className="text-lg opacity-90">Mois de traitement</div>
+                <div className="text-lg opacity-90">{t("benefits.why.time")}</div>
               </div>
               <div>
                 <div className="text-5xl font-bold mb-2 text-accent">24/7</div>
-                <div className="text-lg opacity-90">Support disponible</div>
+                <div className="text-lg opacity-90">{t("benefits.why.support")}</div>
               </div>
             </div>
           </div>

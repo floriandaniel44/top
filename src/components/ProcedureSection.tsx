@@ -2,17 +2,19 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Circle, Download } from "lucide-react";
 import jsPDF from "jspdf";
+import { useTranslation } from "react-i18next";
 
 const ProcedureSection = () => {
+  const { t } = useTranslation();
   const documents = [
-    "Passeport valide (6 mois minimum)",
-    "Diplômes et certificats professionnels",
-    "CV détaillé et lettre de motivation",
-    "Justificatifs d'expérience professionnelle",
-    "Certificat de langue (DELF, TOEFL, etc.)",
-    "Extrait de casier judiciaire",
-    "Certificat médical",
-    "Photos d'identité récentes",
+    t("procedure.docs.list.passport"),
+    t("procedure.docs.list.diplomas"),
+    t("procedure.docs.list.cv"),
+    t("procedure.docs.list.experience"),
+    t("procedure.docs.list.language"),
+    t("procedure.docs.list.criminal"),
+    t("procedure.docs.list.medical"),
+    t("procedure.docs.list.photos"),
   ];
 
  const handleDownloadList = async () => {
@@ -63,13 +65,18 @@ const ProcedureSection = () => {
     doc.setFontSize(22);
     doc.setTextColor(4, 47, 42);
     const titleX = margin + (logoDataUrl ? 90 : 6);
-    doc.text("Liste Complète des Documents Requis", titleX, headerY);
+    const titleText = t("procedure.docs.pdf.title");
+    const wrappedTitle = doc.splitTextToSize(titleText, pageW - titleX - margin);
+    doc.text(wrappedTitle, titleX, headerY - (wrappedTitle.length > 1 ? 10 : 0));
+    
+    // Adjust headerY for subtitle if title is wrapped
+    const subTitleY = headerY + (wrappedTitle.length > 1 ? 25 : 18);
 
     // Subtitle
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(15, 119, 110);
-    doc.text("Programme de Visa Professionnel - ProVisa", titleX, headerY + 18);
+    doc.text(t("procedure.docs.pdf.program"), titleX, subTitleY);
 
     // Accent line
     doc.setDrawColor(6, 182, 212);
@@ -80,7 +87,7 @@ const ProcedureSection = () => {
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(6, 95, 85);
-    doc.text("Bienvenue dans le programme ProVisa !", margin + 20, headerY + 80);
+    doc.text(t("procedure.docs.pdf.welcome"), margin + 20, headerY + 80);
 
     // Bloc de paragraphe explicatif
     doc.setFontSize(12);
@@ -88,10 +95,10 @@ const ProcedureSection = () => {
     doc.setTextColor(17, 24, 39);
 
     const introParagraph = [
-      "Nous sommes ravis de vous accompagner dans votre projet de mobilité professionnelle.",
-      "Ce programme a été conçu pour vous offrir un accompagnement structuré, humain et efficace vers votre nouvelle destination.",
-      "Afin de garantir le bon déroulement de votre candidature, nous vous invitons à préparer soigneusement les documents suivants.",
-      "Chaque pièce est essentielle pour l’analyse de votre dossier et la réussite de votre demande de visa."
+      t("procedure.docs.pdf.intro1"),
+      t("procedure.docs.pdf.intro2"),
+      t("procedure.docs.pdf.intro3"),
+      t("procedure.docs.pdf.intro4")
     ];
 
     let y = headerY + 110;
@@ -136,13 +143,13 @@ const ProcedureSection = () => {
     }
 
     // Footer
-    const footerText = "ProVisa — Document officiel. Veuillez préserver la confidentialité des données.";
+    const footerText = t("procedure.docs.pdf.footer");
     doc.setFontSize(10);
     doc.setTextColor(99, 115, 129);
     doc.text(footerText, margin + 10, pageH - margin - 10);
 
     // Save
-    doc.save("liste-documents-provisa.pdf");
+    doc.save(`${t("procedure.docs.pdf.filename")}.pdf`);
   } catch (err) {
     console.error("Erreur génération PDF:", err);
   }
@@ -151,45 +158,39 @@ const ProcedureSection = () => {
   const steps = [
     {
       number: 1,
-      title: "Évaluation Initiale",
-      description:
-        "Remplissez notre formulaire en ligne pour évaluer votre éligibilité au programme.",
-      duration: "1-3 jours",
+      title: t("procedure.steps.s1.title"),
+      description: t("procedure.steps.s1.desc"),
+      duration: t("procedure.steps.s1.duration"),
     },
     {
       number: 2,
-      title: "Constitution du Dossier",
-      description:
-        "Notre équipe vous guide dans la préparation de tous les documents nécessaires.",
-      duration: "2-3 semaines",
+      title: t("procedure.steps.s2.title"),
+      description: t("procedure.steps.s2.desc"),
+      duration: t("procedure.steps.s2.duration"),
     },
     {
       number: 3,
-      title: "Soumission de la Demande",
-      description:
-        "Nous soumettons votre dossier complet aux autorités compétentes du pays choisi.",
-      duration: "1 semaine",
+      title: t("procedure.steps.s3.title"),
+      description: t("procedure.steps.s3.desc"),
+      duration: t("procedure.steps.s3.duration"),
     },
     {
       number: 4,
-      title: "Traitement Administratif",
-      description:
-        "Les autorités examinent votre demande. Nous assurons le suivi régulier.",
-      duration: "2-4 mois",
+      title: t("procedure.steps.s4.title"),
+      description: t("procedure.steps.s4.desc"),
+      duration: t("procedure.steps.s4.duration"),
     },
     {
       number: 5,
-      title: "Décision & Visa",
-      description:
-        "Réception de la décision et délivrance de votre titre de séjour professionnel.",
-      duration: "1-2 semaines",
+      title: t("procedure.steps.s5.title"),
+      description: t("procedure.steps.s5.desc"),
+      duration: t("procedure.steps.s5.duration"),
     },
     {
       number: 6,
-      title: "Préparation au Départ",
-      description:
-        "Accompagnement pour le logement, le voyage et l'installation dans votre nouveau pays.",
-      duration: "2-4 semaines",
+      title: t("procedure.steps.s6.title"),
+      description: t("procedure.steps.s6.desc"),
+      duration: t("procedure.steps.s6.duration"),
     },
   ];
 
@@ -198,10 +199,10 @@ const ProcedureSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Procédure de Candidature
+            {t("procedure.title")}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Un processus clair et structuré pour maximiser vos chances de succès
+            {t("procedure.subtitle")}
           </p>
         </div>
 
@@ -240,7 +241,7 @@ const ProcedureSection = () => {
 
           <Card className="mt-12 p-8 md:p-12 bg-gradient-to-br from-primary/5 to-accent/5 border-2">
             <h3 className="text-3xl font-bold mb-6 text-center text-foreground">
-              Documents Requis
+              {t("procedure.docs.title")}
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               {documents.map((doc, index) => (
@@ -256,7 +257,7 @@ const ProcedureSection = () => {
             <div className="mt-8 text-center">
               <Button variant="hero" size="xl" onClick={handleDownloadList}>
                 <Download className="mr-2" size={20} />
-                Télécharger la Liste Complète
+                {t("procedure.docs.download")}
               </Button>
             </div>
           </Card>
