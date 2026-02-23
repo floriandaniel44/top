@@ -1,0 +1,289 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "profiles": "Profils",
+    "benefits": "Avantages",
+    "procedure": "Procédure",
+    "faq": "FAQ",
+    "testimonials": "Témoignages",
+    "contact": "Contact",
+    "apply": "Postuler",
+    "admin": "Admin"
+  },
+  "hero": {
+    "badge": "Programme International",
+    "title": "ProVisa",
+    "subtitle": "Obtenez votre visa professionnel et votre bourse internationale pour la France, la Belgique ou la Suisse. Nous accompagnons les professionnels qualifiés dans leur projet d'expatriation.",
+    "cta_start": "Commencer ma procédure",
+    "cta_learn": "En savoir plus",
+    "stat_countries": "Pays partenaires",
+    "stat_professions": "Professions",
+    "stat_support": "Accompagnement"
+  },
+  "about": {
+    "title": "À Propos du Programme",
+    "subtitle": "Notre programme vous permet d'obtenir un titre de séjour professionnel et une bourse internationale pour développer votre carrière en France, Belgique ou Suisse.",
+    "mission_title": "Notre Mission",
+    "mission_desc": "Faciliter l'accès aux opportunités professionnelles en Europe pour les talents qualifiés du monde entier.",
+    "profiles_title": "Profils Ciblés",
+    "profiles_desc": "Nous accompagnons des professionnels qualifiés dans plus de 15 secteurs d'activité recherchés en Europe.",
+    "excellence_title": "Excellence",
+    "excellence_desc": "Un accompagnement personnalisé et professionnel à chaque étape de votre procédure de visa et d'installation.",
+    "why_title": "Pourquoi ce Programme ?",
+    "why_p1": "L'Europe fait face à une pénurie de talents qualifiés dans de nombreux secteurs. Ce programme a été créé pour faciliter la mobilité des professionnels compétents souhaitant contribuer au développement économique européen.",
+    "why_p2": "En participant à ce programme, vous bénéficiez d'un parcours simplifié pour obtenir votre visa professionnel, ainsi qu'une bourse pour faciliter votre installation.",
+    "partners_title": "Pays Partenaires"
+  },
+  "profiles": {
+    "title": "Profils Concernés",
+    "subtitle": "Le programme s'adresse aux professionnels qualifiés dans des secteurs à forte demande en Europe. Découvrez si votre profil est éligible.",
+    "demand": {
+      "very_high": "Très forte",
+      "high": "Forte",
+      "medium": "Moyenne"
+    },
+    "list": {
+      "docs": "Médecins & Infirmiers",
+      "engineers": "Ingénieurs",
+      "teachers": "Enseignants",
+      "managers": "Gestionnaires",
+      "social": "Travailleurs Sociaux",
+      "accountants": "Comptables",
+      "architects": "Architectes",
+      "chefs": "Chefs Cuisiniers",
+      "logistics": "Logisticiens",
+      "designers": "Designers",
+      "researchers": "Chercheurs"
+    },
+    "eligibility": {
+      "title": "Critères d'Éligibilité",
+      "c1": "Diplôme ou certification professionnelle reconnu",
+      "c2": "Expérience professionnelle d'au moins 2 ans",
+      "c3": "Niveau de langue B1 minimum (français, anglais ou allemand)",
+      "c4": "Âge entre 21 et 45 ans",
+      "c5": "Casier judiciaire vierge",
+      "c6": "Motivation et projet professionnel clair"
+    }
+  },
+  "benefits": {
+    "title": "Avantages du Programme",
+    "subtitle": "Un accompagnement global pour réussir votre projet d'expatriation professionnelle en toute sérénité.",
+    "residence": {
+      "title": "Titre de Séjour",
+      "desc": "Permis de travail valable 3 ans, renouvelable, vous permettant de vivre et travailler légalement en Europe."
+    },
+    "grant": {
+      "title": "Bourse Internationale",
+      "desc": "Aide financière de 5 000€ à 15 000€ pour faciliter votre installation et vos premiers mois sur place."
+    },
+    "support": {
+      "title": "Accompagnement Complet",
+      "desc": "Support personnalisé à chaque étape : dossier, démarches administratives, recherche de logement."
+    },
+    "housing": {
+      "title": "Aide au Logement",
+      "desc": "Assistance pour trouver un logement adapté à vos besoins avant votre arrivée dans le pays d'accueil."
+    },
+    "travel": {
+      "title": "Facilitation de Voyage",
+      "desc": "Conseils sur les billets d'avion, transport de biens personnels et formalités douanières."
+    },
+    "insurance": {
+      "title": "Protection Sociale",
+      "desc": "Accès au système de sécurité sociale et d'assurance du pays d'accueil dès votre arrivée."
+    },
+    "why": {
+      "title": "Pourquoi Choisir Notre Programme ?",
+      "desc": "Nous simplifions les démarches complexes d'immigration professionnelle et vous offrons les meilleures chances de réussite grâce à notre expertise et notre réseau de partenaires.",
+      "rate": "Taux d'acceptation",
+      "time": "Mois de traitement",
+      "support": "Support disponible"
+    }
+  },
+  "procedure": {
+    "title": "Procédure de Candidature",
+    "subtitle": "Un processus clair et structuré pour maximiser vos chances de succès",
+    "steps": {
+      "s1": {
+        "title": "Évaluation Initiale",
+        "desc": "Remplissez notre formulaire en ligne pour évaluer votre éligibilité au programme.",
+        "duration": "1-3 jours"
+      },
+      "s2": {
+        "title": "Constitution du Dossier",
+        "desc": "Notre équipe vous guide dans la préparation de tous les documents nécessaires.",
+        "duration": "2-3 semaines"
+      },
+      "s3": {
+        "title": "Soumission de la Demande",
+        "desc": "Nous soumettons votre dossier complet aux autorités compétentes du pays choisi.",
+        "duration": "1 semaine"
+      },
+      "s4": {
+        "title": "Traitement Administratif",
+        "desc": "Les autorités examinent votre demande. Nous assurons le suivi régulier.",
+        "duration": "2-4 mois"
+      },
+      "s5": {
+        "title": "Décision & Visa",
+        "desc": "Réception de la décision et délivrance de votre titre de séjour professionnel.",
+        "duration": "1-2 semaines"
+      },
+      "s6": {
+        "title": "Préparation au Départ",
+        "desc": "Accompagnement pour le logement, le voyage et l'installation dans votre nouveau pays.",
+        "duration": "2-4 semaines"
+      }
+    },
+    "docs": {
+      "title": "Documents Requis",
+      "download": "Télécharger la Liste Complète",
+      "list": {
+        "passport": "Passeport valide (6 mois minimum)",
+        "diplomas": "Diplômes et certificats professionnels",
+        "cv": "CV détaillé et lettre de motivation",
+        "experience": "Justificatifs d'expérience professionnelle",
+        "language": "Certificat de langue (DELF, TOEFL, etc.)",
+        "criminal": "Extrait de casier judiciaire",
+        "medical": "Certificat médical",
+        "photos": "Photos d'identité récentes"
+      },
+      "pdf": {
+        "title": "Liste Complète des Documents Requis",
+        "program": "Programme de Visa Professionnel - ProVisa",
+        "welcome": "Bienvenue dans le programme ProVisa !",
+        "intro1": "Nous sommes ravis de vous accompagner dans votre projet de mobilité professionnelle.",
+        "intro2": "Ce programme a été conçu pour vous offrir un accompagnement structuré, humain et efficace vers votre nouvelle destination.",
+        "intro3": "Afin de garantir le bon déroulement de votre candidature, nous vous invitons à préparer soigneusement les documents suivants.",
+        "intro4": "Chaque pièce est essentielle pour l’analyse de votre dossier et la réussite de votre demande de visa.",
+        "footer": "ProVisa — Document officiel. Veuillez préserver la confidentialité des données.",
+        "filename": "liste-documents-provisa"
+      }
+    }
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "subtitle": "Trouvez les réponses aux questions les plus courantes sur le programme",
+    "q1": {
+      "q": "Qui peut participer à ce programme ?",
+      "a": "Le programme s'adresse aux professionnels qualifiés âgés de 21 à 45 ans, possédant un diplôme reconnu et au moins 2 ans d'expérience dans leur domaine. Les secteurs prioritaires incluent la santé, l'IT, l'ingénierie, et l'enseignement."
+    },
+    "q2": {
+      "q": "Combien coûte la participation au programme ?",
+      "a": "Les frais de participation varient selon le pays choisi et votre situation. Ils incluent les frais administratifs, l'accompagnement personnalisé et les démarches consulaires. Contactez-nous pour un devis personnalisé. La bourse internationale que vous recevrez couvre largement ces frais."
+    },
+    "q3": {
+      "q": "Combien de temps prend le processus complet ?",
+      "a": "En moyenne, le processus complet prend entre 3 et 6 mois, de la soumission du dossier à l'obtention du visa. Ce délai peut varier selon le pays et la période de l'année."
+    },
+    "q4": {
+      "q": "Puis-je choisir le pays de destination ?",
+      "a": "Oui, vous pouvez indiquer vos préférences parmi la France, la Belgique et la Suisse. Nous vous conseillerons sur le pays le plus adapté à votre profil et à vos objectifs professionnels."
+    },
+    "q5": {
+      "q": "Le titre de séjour est-il renouvelable ?",
+      "a": "Oui, le titre de séjour initial est généralement valable 3 ans et peut être renouvelé si vous maintenez une activité professionnelle dans le pays d'accueil. Après 5 ans, vous pourrez demander un titre de résident permanent."
+    },
+    "q6": {
+      "q": "Puis-je venir avec ma famille ?",
+      "a": "Oui, le regroupement familial est possible. Votre conjoint(e) et vos enfants peuvent vous accompagner ou vous rejoindre ultérieurement. Des conditions spécifiques s'appliquent selon le pays."
+    },
+    "q7": {
+      "q": "Que se passe-t-il si ma demande est refusée ?",
+      "a": "En cas de refus, nous analysons les raisons et vous proposons un plan d'action. Vous pouvez généralement faire appel ou soumettre une nouvelle demande après avoir corrigé les points problématiques."
+    },
+    "q8": {
+      "q": "Dois-je déjà avoir une offre d'emploi ?",
+      "a": "Non, ce programme ne requiert pas d'offre d'emploi préalable. Cependant, avoir des contacts professionnels ou des pistes dans le pays d'accueil peut renforcer votre dossier."
+    }
+  },
+  "testimonials": {
+    "title": "Témoignages de Réussite",
+    "subtitle": "Découvrez les histoires inspirantes de professionnels qui ont réussi leur projet d'expatriation",
+    "professions": {
+      "doctor": "Médecin Généraliste",
+      "engineer": "Ingénieur Logiciel",
+      "teacher": "Enseignante",
+      "chef": "Chef Cuisinier",
+      "nurse": "Infirmière",
+      "architect": "Architecte"
+    },
+    "list": {
+      "t1": {
+        "text": "Grâce à ce programme, j'ai pu obtenir mon titre de séjour en 4 mois seulement. L'accompagnement a été exceptionnel, et la bourse m'a vraiment aidée à m'installer sereinement à Lyon."
+      },
+      "t2": {
+        "text": "Un processus fluide et transparent du début à la fin. L'équipe a géré tous les aspects administratifs, me permettant de me concentrer sur ma recherche d'emploi. Je travaille maintenant à Bruxelles !"
+      },
+      "t3": {
+        "text": "Je recommande vivement ce programme. Le soutien personnalisé et les conseils précieux m'ont permis de réaliser mon rêve de vivre et enseigner en Suisse. Merci infiniment !"
+      },
+      "t4": {
+        "text": "L'équipe a été d'une aide précieuse pour préparer mon dossier et trouver un logement à Paris. Le processus a été plus rapide que prévu et la bourse m'a beaucoup aidé financièrement."
+      },
+      "t5": {
+        "text": "Une expérience formidable ! Tout a été géré professionnellement et j'ai été informée à chaque étape. Je travaille maintenant dans un hôpital à Anvers et je suis très heureuse."
+      },
+      "t6": {
+        "text": "Service impeccable et résultats rapides. En 5 mois, j'avais mon visa et j'étais installé à Genève. Le programme offre vraiment ce qu'il promet. Une opportunité à ne pas manquer !"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contactez-Nous",
+    "subtitle": "Une question ? Besoin de plus d'informations ? Notre équipe est là pour vous accompagner",
+    "info": {
+      "email": "Email",
+      "office": "Bureaux",
+      "hours": {
+        "title": "Horaires d'ouverture",
+        "week": "Lundi - Vendredi: 9h - 18h",
+        "sat": "Samedi: 10h - 14h",
+        "sun": "Dimanche: Fermé"
+      }
+    },
+    "form": {
+      "title": "Commencez Votre Procédure",
+      "name": "Nom complet *",
+      "email": "Email *",
+      "phone": "Téléphone *",
+      "country": "Pays souhaité *",
+      "country_placeholder": "Sélectionnez un pays",
+      "countries": {
+        "fr": "France",
+        "be": "Belgique",
+        "ch": "Suisse",
+        "undecided": "Pas encore décidé"
+      },
+      "profession": "Profession / Secteur d'activité *",
+      "profession_placeholder": "Ex: Infirmier, Ingénieur...",
+      "message": "Message *",
+      "message_placeholder": "Parlez-nous de votre projet et de vos questions...",
+      "submit": "Envoyer ma demande",
+      "submitting": "Envoi en cours...",
+      "consent": "En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe."
+    },
+    "messages": {
+      "success_title": "Message envoyé !",
+      "success_desc": "Nous vous contacterons dans les 24-48 heures.",
+      "error_title": "Erreur",
+      "validation_error": "Erreur de validation",
+      "limit_error": "Limite atteinte",
+      "network_error": "Erreur réseau",
+      "network_desc": "Impossible de contacter la fonction. Vérifiez votre connexion ou le déploiement de la fonction."
+    }
+  },
+  "footer": {
+    "desc": "Votre partenaire pour une carrière internationale réussie en Europe.",
+    "program": "Programme",
+    "resources": "Ressources",
+    "follow": "Suivez-nous",
+    "rights": "© 2025 ProVisa. Tous droits réservés.",
+    "links": {
+      "legal": "Mentions légales",
+      "privacy": "Politique de confidentialité",
+      "terms": "CGU"
+    }
+  }
+}

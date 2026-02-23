@@ -8,26 +8,28 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "@/hooks/use-toast";
 import { Mail, MapPin, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
-const applicationSchema = z.object({
-  name: z.string().trim().min(2, "Le nom doit contenir au moins 2 caractères").max(100, "Le nom est trop long"),
-  email: z.string().trim().email("Email invalide").max(255, "L'email est trop long"),
-  phone: z.string().trim().min(8, "Numéro de téléphone invalide").max(20, "Numéro de téléphone trop long"),
-  country: z.string().min(1, "Veuillez sélectionner un pays"),
-  profession: z
-    .string()
-    .trim()
-    .min(2, "La profession doit contenir au moins 2 caractères")
-    .max(100, "La profession est trop longue"),
-  message: z
-    .string()
-    .trim()
-    .min(10, "Le message doit contenir au moins 10 caractères")
-    .max(1000, "Le message est trop long"),
-});
-
 const ContactSection = () => {
+  const { t, i18n } = useTranslation();
+  
+  const applicationSchema = z.object({
+    name: z.string().trim().min(2, t("contact.messages.validation_error")).max(100, t("contact.messages.error_title")),
+    email: z.string().trim().email(t("contact.messages.error_title")).max(255, t("contact.messages.error_title")),
+    phone: z.string().trim().min(8, t("contact.messages.error_title")).max(20, t("contact.messages.error_title")),
+    country: z.string().min(1, t("contact.messages.error_title")),
+    profession: z
+      .string()
+      .trim()
+      .min(2, t("contact.messages.error_title"))
+      .max(100, t("contact.messages.error_title")),
+    message: z
+      .string()
+      .trim()
+      .min(10, t("contact.messages.error_title"))
+      .max(1000, t("contact.messages.error_title")),
+  });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -49,7 +51,7 @@ const ContactSection = () => {
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast({
-          title: "Erreur de validation",
+          title: t("contact.messages.validation_error"),
           description: error.errors[0].message,
           variant: "destructive",
         });
@@ -74,6 +76,7 @@ const ContactSection = () => {
           message: formData.message,
           honeypot: formData.honeypot, // Spam trap
           timestamp: formLoadTime, // Time-based check
+          language: i18n.language, // Current language for email
         },
       });
 
@@ -83,7 +86,7 @@ const ContactSection = () => {
         // Handle rate limiting errors
         if (error.message?.includes("Limite de soumissions") || error.message?.includes("Trop de tentatives")) {
           toast({
-            title: "Limite atteinte",
+            title: t("contact.messages.limit_error"),
             description: error.message,
             variant: "destructive",
           });
@@ -109,6 +112,7 @@ const ContactSection = () => {
               message: formData.message,
               honeypot: formData.honeypot,
               timestamp: formLoadTime,
+              language: i18n.language,
             }),
           });
 
@@ -116,15 +120,15 @@ const ContactSection = () => {
           console.error("Fallback fetch status:", res.status, "body:", text);
 
           toast({
-            title: "Erreur de soumission",
-            description: `Erreur HTTP ${res.status} — voir console pour plus de détails`,
+            title: t("contact.messages.error_title"),
+            description: `Erreur HTTP ${res.status} — voir console for more details`,
             variant: "destructive",
           });
         } catch (fetchErr) {
           console.error("Fallback fetch error:", fetchErr);
           toast({
-            title: "Erreur réseau",
-            description: "Impossible de contacter la fonction. Vérifiez votre connexion ou le déploiement de la fonction.",
+            title: t("contact.messages.network_error"),
+            description: t("contact.messages.network_desc"),
             variant: "destructive",
           });
         }
@@ -134,8 +138,8 @@ const ContactSection = () => {
       }
 
       toast({
-        title: "Message envoyé !",
-        description: "Nous vous contacterons dans les 24-48 heures.",
+        title: t("contact.messages.success_title"),
+        description: t("contact.messages.success_desc"),
       });
 
       // Reset form
@@ -151,8 +155,8 @@ const ContactSection = () => {
     } catch (error: any) {
       console.error("Submission error:", error);
       toast({
-        title: "Erreur",
-        description: error?.message || "Une erreur est survenue. Veuillez réessayer.",
+        title: t("contact.messages.error_title"),
+        description: error?.message || "An error occurred. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -168,9 +172,9 @@ const ContactSection = () => {
     <section id="contact" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Contactez-Nous</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">{t("contact.title")}</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Une question ? Besoin de plus d'informations ? Notre équipe est là pour vous accompagner
+            {t("contact.subtitle")}
           </p>
         </div>
 
@@ -183,7 +187,7 @@ const ContactSection = () => {
                   <Mail className="text-primary" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-foreground mb-1">Email</h3>
+                  <h3 className="font-bold text-foreground mb-1">{t("contact.info.email")}</h3>
                   <p className="text-muted-foreground text-sm hover:text-primary transition-colors">
                     contact@provisa.fr
                   </p>
@@ -197,39 +201,39 @@ const ContactSection = () => {
                   <MapPin className="text-success" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-foreground mb-1">Bureaux</h3>
+                  <h3 className="font-bold text-foreground mb-1">{t("contact.info.office")}</h3>
                   <p className="text-muted-foreground text-sm">Paris • Bruxelles • Genève</p>
                 </div>
               </div>
             </Card>
 
             <Card className="p-6 bg-gradient-to-br from-primary/5 to-accent/5">
-              <h3 className="font-bold text-foreground mb-3">Horaires d'ouverture</h3>
+              <h3 className="font-bold text-foreground mb-3">{t("contact.info.hours.title")}</h3>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <p>Lundi - Vendredi: 9h - 18h</p>
-                <p>Samedi: 10h - 14h</p>
-                <p>Dimanche: Fermé</p>
+                <p>{t("contact.info.hours.week")}</p>
+                <p>{t("contact.info.hours.sat")}</p>
+                <p>{t("contact.info.hours.sun")}</p>
               </div>
             </Card>
           </div>
 
           {/* Contact Form */}
           <Card className="lg:col-span-2 p-8">
-            <h3 className="text-2xl font-bold text-foreground mb-6">Commencez Votre Procédure</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-6">{t("contact.form.title")}</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Nom complet *</Label>
+                  <Label htmlFor="name">{t("contact.form.name")}</Label>
                   <Input
                     id="name"
-                    placeholder="Votre nom"
+                    placeholder={t("contact.form.name")}
                     value={formData.name}
                     onChange={(e) => handleChange("name", e.target.value)}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
+                  <Label htmlFor="email">{t("contact.form.email")}</Label>
                   <Input
                     id="email"
                     type="email"
@@ -243,7 +247,7 @@ const ContactSection = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Téléphone *</Label>
+                  <Label htmlFor="phone">{t("contact.form.phone")}</Label>
                   <Input
                     id="phone"
                     type="tel"
@@ -254,26 +258,26 @@ const ContactSection = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="country">Pays souhaité *</Label>
+                  <Label htmlFor="country">{t("contact.form.country")}</Label>
                   <Select value={formData.country} onValueChange={(value) => handleChange("country", value)}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Sélectionnez un pays" />
+                      <SelectValue placeholder={t("contact.form.country_placeholder")} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="france">France</SelectItem>
-                      <SelectItem value="belgique">Belgique</SelectItem>
-                      <SelectItem value="suisse">Suisse</SelectItem>
-                      <SelectItem value="indecis">Pas encore décidé</SelectItem>
+                      <SelectItem value="france">{t("contact.form.countries.fr")}</SelectItem>
+                      <SelectItem value="belgique">{t("contact.form.countries.be")}</SelectItem>
+                      <SelectItem value="suisse">{t("contact.form.countries.ch")}</SelectItem>
+                      <SelectItem value="indecis">{t("contact.form.countries.undecided")}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="profession">Profession / Secteur d'activité *</Label>
+                <Label htmlFor="profession">{t("contact.form.profession")}</Label>
                 <Input
                   id="profession"
-                  placeholder="Ex: Infirmier, Ingénieur..."
+                  placeholder={t("contact.form.profession_placeholder")}
                   value={formData.profession}
                   onChange={(e) => handleChange("profession", e.target.value)}
                   required
@@ -281,10 +285,10 @@ const ContactSection = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message">Message *</Label>
+                <Label htmlFor="message">{t("contact.form.message")}</Label>
                 <Textarea
                   id="message"
-                  placeholder="Parlez-nous de votre projet et de vos questions..."
+                  placeholder={t("contact.form.message_placeholder")}
                   rows={5}
                   value={formData.message}
                   onChange={(e) => handleChange("message", e.target.value)}
@@ -305,12 +309,12 @@ const ContactSection = () => {
               </div>
 
               <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande"}
+                {isSubmitting ? t("contact.form.submitting") : t("contact.form.submit")}
                 <Send size={18} />
               </Button>
 
               <p className="text-sm text-muted-foreground text-center">
-                En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe.
+                {t("contact.form.consent")}
               </p>
             </form>
           </Card>

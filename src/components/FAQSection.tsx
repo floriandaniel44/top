@@ -4,40 +4,42 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useTranslation } from "react-i18next";
 
 const FAQSection = () => {
+  const { t } = useTranslation();
   const faqs = [
     {
-      question: "Qui peut participer à ce programme ?",
-      answer: "Le programme s'adresse aux professionnels qualifiés âgés de 21 à 45 ans, possédant un diplôme reconnu et au moins 2 ans d'expérience dans leur domaine. Les secteurs prioritaires incluent la santé, l'IT, l'ingénierie, et l'enseignement."
+      question: t("faq.q1.q"),
+      answer: t("faq.q1.a")
     },
     {
-      question: "Combien coûte la participation au programme ?",
-      answer: "Les frais de participation varient selon le pays choisi et votre situation. Ils incluent les frais administratifs, l'accompagnement personnalisé et les démarches consulaires. Contactez-nous pour un devis personnalisé. La bourse internationale que vous recevrez couvre largement ces frais."
+      question: t("faq.q2.q"),
+      answer: t("faq.q2.a")
     },
     {
-      question: "Combien de temps prend le processus complet ?",
-      answer: "En moyenne, le processus complet prend entre 3 et 6 mois, de la soumission du dossier à l'obtention du visa. Ce délai peut varier selon le pays et la période de l'année."
+      question: t("faq.q3.q"),
+      answer: t("faq.q3.a")
     },
     {
-      question: "Puis-je choisir le pays de destination ?",
-      answer: "Oui, vous pouvez indiquer vos préférences parmi la France, la Belgique et la Suisse. Nous vous conseillerons sur le pays le plus adapté à votre profil et à vos objectifs professionnels."
+      question: t("faq.q4.q"),
+      answer: t("faq.q4.a")
     },
     {
-      question: "Le titre de séjour est-il renouvelable ?",
-      answer: "Oui, le titre de séjour initial est généralement valable 3 ans et peut être renouvelé si vous maintenez une activité professionnelle dans le pays d'accueil. Après 5 ans, vous pourrez demander un titre de résident permanent."
+      question: t("faq.q5.q"),
+      answer: t("faq.q5.a")
     },
     {
-      question: "Puis-je venir avec ma famille ?",
-      answer: "Oui, le regroupement familial est possible. Votre conjoint(e) et vos enfants peuvent vous accompagner ou vous rejoindre ultérieurement. Des conditions spécifiques s'appliquent selon le pays."
+      question: t("faq.q6.q"),
+      answer: t("faq.q6.a")
     },
     {
-      question: "Que se passe-t-il si ma demande est refusée ?",
-      answer: "En cas de refus, nous analysons les raisons et vous proposons un plan d'action. Vous pouvez généralement faire appel ou soumettre une nouvelle demande après avoir corrigé les points problématiques."
+      question: t("faq.q7.q"),
+      answer: t("faq.q7.a")
     },
     {
-      question: "Dois-je déjà avoir une offre d'emploi ?",
-      answer: "Non, ce programme ne requiert pas d'offre d'emploi préalable. Cependant, avoir des contacts professionnels ou des pistes dans le pays d'accueil peut renforcer votre dossier."
+      question: t("faq.q8.q"),
+      answer: t("faq.q8.a")
     }
   ];
 
@@ -46,10 +48,10 @@ const FAQSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Questions Fréquentes
+            {t("faq.title")}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Trouvez les réponses aux questions les plus courantes sur le programme
+            {t("faq.subtitle")}
           </p>
         </div>
 

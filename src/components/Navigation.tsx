@@ -4,12 +4,15 @@ import { Menu, X, Shield } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isAdmin } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,14 +23,14 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { label: "Accueil", href: "#accueil" },
-    { label: "À propos", href: "#apropos" },
-    { label: "Profils", href: "#profils" },
-    { label: "Avantages", href: "#avantages" },
-    { label: "Procédure", href: "#procedure" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Témoignages", href: "#testimonials" },
-    { label: "Contact", href: "#contact" },
+    { label: t("nav.home"), href: "#accueil" },
+    { label: t("nav.about"), href: "#apropos" },
+    { label: t("nav.profiles"), href: "#profils" },
+    { label: t("nav.benefits"), href: "#avantages" },
+    { label: t("nav.procedure"), href: "#procedure" },
+    { label: t("nav.faq"), href: "#faq" },
+    { label: t("nav.testimonials"), href: "#testimonials" },
+    { label: t("nav.contact"), href: "#contact" },
   ];
 
   return (
@@ -40,6 +43,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center gap-4">
             <ThemeToggle />
+            <LanguageSwitcher />
             <a href="#accueil" className="text-2xl font-bold text-primary">
              ProVisa
             </a>
@@ -57,7 +61,7 @@ const Navigation = () => {
               </a>
             ))}
             <Button variant="hero" size="default" asChild>
-              <a href="#contact">Postuler</a>
+              <a href="#contact">{t("nav.apply")}</a>
             </Button>
             {isAdmin && (
               <Button 
@@ -66,7 +70,7 @@ const Navigation = () => {
                 className="gap-2"
               >
                 <Shield className="w-4 h-4" />
-                Admin
+                {t("nav.admin")}
               </Button>
             )}
           </div>
@@ -94,7 +98,7 @@ const Navigation = () => {
               </a>
             ))}
             <Button variant="hero" size="default" className="w-full mt-4" asChild>
-              <a href="#contact">Postuler</a>
+              <a href="#contact">{t("nav.apply")}</a>
             </Button>
             {isAdmin && (
               <Button 
@@ -106,7 +110,7 @@ const Navigation = () => {
                 className="w-full mt-2 gap-2"
               >
                 <Shield className="w-4 h-4" />
-                Admin
+                {t("nav.admin")}
               </Button>
             )}
           </div>

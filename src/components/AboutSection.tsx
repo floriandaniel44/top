@@ -1,22 +1,24 @@
 import { Card } from "@/components/ui/card";
 import { Target, Users, Award } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const AboutSection = () => {
+  const { t } = useTranslation();
   const features = [
     {
       icon: Target,
-      title: "Notre Mission",
-      description: "Faciliter l'accès aux opportunités professionnelles en Europe pour les talents qualifiés du monde entier."
+      title: t("about.mission_title"),
+      description: t("about.mission_desc")
     },
     {
       icon: Users,
-      title: "Profils Ciblés",
-      description: "Nous accompagnons des professionnels qualifiés dans plus de 15 secteurs d'activité recherchés en Europe."
+      title: t("about.profiles_title"),
+      description: t("about.profiles_desc")
     },
     {
       icon: Award,
-      title: "Excellence",
-      description: "Un accompagnement personnalisé et professionnel à chaque étape de votre procédure de visa et d'installation."
+      title: t("about.excellence_title"),
+      description: t("about.excellence_desc")
     }
   ];
 
@@ -25,11 +27,10 @@ const AboutSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            À Propos du Programme
+            {t("about.title")}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Notre programme vous permet d'obtenir un titre de séjour professionnel et une bourse internationale 
-            pour développer votre carrière en France, Belgique ou Suisse.
+            {t("about.subtitle")}
           </p>
         </div>
 
@@ -52,23 +53,20 @@ const AboutSection = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-3xl font-bold mb-6 text-foreground">
-                Pourquoi ce Programme ?
+                {t("about.why_title")}
               </h3>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  L'Europe fait face à une pénurie de talents qualifiés dans de nombreux secteurs. 
-                  Ce programme a été créé pour faciliter la mobilité des professionnels compétents 
-                  souhaitant contribuer au développement économique européen.
+                  {t("about.why_p1")}
                 </p>
                 <p>
-                  En participant à ce programme, vous bénéficiez d'un parcours simplifié pour obtenir 
-                  votre visa professionnel, ainsi qu'une bourse pour faciliter votre installation.
+                  {t("about.why_p2")}
                 </p>
               </div>
             </div>
             <div>
               <h3 className="text-3xl font-bold mb-6 text-foreground">
-                Pays Partenaires
+                {t("about.partners_title")}
               </h3>
               <div className="space-y-4">
                 {["🇫🇷 France", "🇧🇪 Belgique", "🇨🇭 Suisse"].map((country, index) => (

@@ -1,0 +1,289 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "profiles": "Profiles",
+    "benefits": "Benefits",
+    "procedure": "Procedure",
+    "faq": "FAQ",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "apply": "Apply",
+    "admin": "Admin"
+  },
+  "hero": {
+    "badge": "International Program",
+    "title": "ProVisa",
+    "subtitle": "Get your professional visa and international grant for France, Belgium, or Switzerland. We support qualified professionals in their expatriation project.",
+    "cta_start": "Start my procedure",
+    "cta_learn": "Learn more",
+    "stat_countries": "Partner countries",
+    "stat_professions": "Professions",
+    "stat_support": "Support"
+  },
+  "about": {
+    "title": "About the Program",
+    "subtitle": "Our program allows you to obtain a professional residence permit and an international grant to develop your career in France, Belgium, or Switzerland.",
+    "mission_title": "Our Mission",
+    "mission_desc": "Facilitate access to professional opportunities in Europe for qualified talents from around the world.",
+    "profiles_title": "Target Profiles",
+    "profiles_desc": "We support qualified professionals in more than 15 in-demand sectors in Europe.",
+    "excellence_title": "Excellence",
+    "excellence_desc": "Personalized and professional support at every stage of your visa and installation procedure.",
+    "why_title": "Why this Program?",
+    "why_p1": "Europe faces a shortage of qualified talent in many sectors. This program was created to facilitate the mobility of competent professionals wishing to contribute to European economic development.",
+    "why_p2": "By participating in this program, you benefit from a simplified path to obtain your professional visa, as well as a grant to facilitate your installation.",
+    "partners_title": "Partner Countries"
+  },
+  "profiles": {
+    "title": "Relevant Profiles",
+    "subtitle": "The program is aimed at qualified professionals in sectors with high demand in Europe. Find out if your profile is eligible.",
+    "demand": {
+      "very_high": "Very high",
+      "high": "High",
+      "medium": "Medium"
+    },
+    "list": {
+      "docs": "Doctors & Nurses",
+      "engineers": "Engineers",
+      "teachers": "Teachers",
+      "managers": "Managers",
+      "social": "Social Workers",
+      "accountants": "Accountants",
+      "architects": "Architects",
+      "chefs": "Chefs",
+      "logistics": "Logistics Managers",
+      "designers": "Designers",
+      "researchers": "Researchers"
+    },
+    "eligibility": {
+      "title": "Eligibility Criteria",
+      "c1": "Recognized diploma or professional certification",
+      "c2": "At least 2 years of professional experience",
+      "c3": "Minimum B1 language level (French, English or German)",
+      "c4": "Age between 21 and 45 years",
+      "c5": "Clean criminal record",
+      "c6": "Motivation and clear professional project"
+    }
+  },
+  "benefits": {
+    "title": "Program Benefits",
+    "subtitle": "Global support to succeed in your professional expatriation project with peace of mind.",
+    "residence": {
+      "title": "Residence Permit",
+      "desc": "Work permit valid for 3 years, renewable, allowing you to live and work legally in Europe."
+    },
+    "grant": {
+      "title": "International Grant",
+      "desc": "Financial aid of €5,000 to €15,000 to facilitate your installation and first months on site."
+    },
+    "support": {
+      "title": "Full Support",
+      "desc": "Personalized support at every step: application, administrative procedures, housing search."
+    },
+    "housing": {
+      "title": "Housing Assistance",
+      "desc": "Assistance in finding housing adapted to your needs before your arrival in the host country."
+    },
+    "travel": {
+      "title": "Travel Facilitation",
+      "desc": "Advice on flight tickets, transport of personal goods and customs formalities."
+    },
+    "insurance": {
+      "title": "Social Protection",
+      "desc": "Access to the social security and insurance system of the host country upon your arrival."
+    },
+    "why": {
+      "title": "Why Choose Our Program?",
+      "desc": "We simplify complex professional immigration procedures and offer you the best chances of success thanks to our expertise and network of partners.",
+      "rate": "Acceptance rate",
+      "time": "Months of processing",
+      "support": "Support available"
+    }
+  },
+  "procedure": {
+    "title": "Application Procedure",
+    "subtitle": "A clear and structured process to maximize your chances of success",
+    "steps": {
+      "s1": {
+        "title": "Initial Evaluation",
+        "desc": "Fill out our online form to assess your eligibility for the program.",
+        "duration": "1-3 days"
+      },
+      "s2": {
+        "title": "File Preparation",
+        "desc": "Our team guides you in preparing all necessary documents.",
+        "duration": "2-3 weeks"
+      },
+      "s3": {
+        "title": "Application Submission",
+        "desc": "We submit your complete file to the competent authorities of the chosen country.",
+        "duration": "1 week"
+      },
+      "s4": {
+        "title": "Administrative Processing",
+        "desc": "The authorities examine your application. We ensure regular follow-up.",
+        "duration": "2-4 months"
+      },
+      "s5": {
+        "title": "Decision & Visa",
+        "desc": "Receipt of the decision and issuance of your professional residence permit.",
+        "duration": "1-2 weeks"
+      },
+      "s6": {
+        "title": "Departure Preparation",
+        "desc": "Support for housing, travel and installation in your new country.",
+        "duration": "2-4 weeks"
+      }
+    },
+    "docs": {
+      "title": "Required Documents",
+      "download": "Download the Complete List",
+      "list": {
+        "passport": "Valid passport (6 months minimum)",
+        "diplomas": "Diplomas and professional certificates",
+        "cv": "Detailed CV and cover letter",
+        "experience": "Proof of professional experience",
+        "language": "Language certificate (DELF, TOEFL, etc.)",
+        "criminal": "Criminal record extract",
+        "medical": "Medical certificate",
+        "photos": "Recent identity photos"
+      },
+      "pdf": {
+        "title": "Complete List of Required Documents",
+        "program": "Professional Visa Program - ProVisa",
+        "welcome": "Welcome to the ProVisa program!",
+        "intro1": "We are delighted to support you in your professional mobility project.",
+        "intro2": "This program has been designed to offer you structured, humane and effective support towards your new destination.",
+        "intro3": "To ensure the smooth running of your application, we invite you to carefully prepare the following documents.",
+        "intro4": "Each piece is essential for the analysis of your file and the success of your visa application.",
+        "footer": "ProVisa — Official document. Please maintain data confidentiality.",
+        "filename": "provisa-required-documents"
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to the most common questions about the program",
+    "q1": {
+      "q": "Who can participate in this program?",
+      "a": "The program is aimed at qualified professionals aged 21 to 45, with a recognized diploma and at least 2 years of experience in their field. Priority sectors include healthcare, IT, engineering, and education."
+    },
+    "q2": {
+      "q": "How much does it cost to participate in the program?",
+      "a": "Participation fees vary depending on the chosen country and your situation. They include administrative fees, personalized support and consular procedures. Contact us for a personalized quote. The international grant you will receive covers these fees largely."
+    },
+    "q3": {
+      "q": "How long does the complete process take?",
+      "a": "On average, the complete process takes between 3 and 6 months, from application submission to visa obtainment. This time may vary by country and time of year."
+    },
+    "q4": {
+      "q": "Can I choose the destination country?",
+      "a": "Yes, you can indicate your preferences among France, Belgium and Switzerland. We will advise you on the country most suited to your profile and professional goals."
+    },
+    "q5": {
+      "q": "Is the residence permit renewable?",
+      "a": "Yes, the initial residence permit is generally valid for 3 years and can be renewed if you maintain a professional activity in the host country. After 5 years, you can apply for a permanent resident permit."
+    },
+    "q6": {
+      "q": "Can I come with my family?",
+      "a": "Yes, family reunification is possible. Your spouse and children can accompany you or join you later. Specific conditions apply by country."
+    },
+    "q7": {
+      "q": "What happens if my application is refused?",
+      "a": "In case of refusal, we analyze the reasons and propose an action plan. You can generally appeal or submit a new application after correcting the problematic points."
+    },
+    "q8": {
+      "q": "Do I already need to have a job offer?",
+      "a": "No, this program does not require a prior job offer. However, having professional contacts or leads in the host country can strengthen your file."
+    }
+  },
+  "testimonials": {
+    "title": "Success Stories",
+    "subtitle": "Discover the inspiring stories of professionals who successfully completed their expatriation project",
+    "professions": {
+      "doctor": "General Practitioner",
+      "engineer": "Software Engineer",
+      "teacher": "Teacher",
+      "chef": "Chef",
+      "nurse": "Nurse",
+      "architect": "Architect"
+    },
+    "list": {
+      "t1": {
+        "text": "Thanks to this program, I was able to get my residence permit in just 4 months. The support was exceptional, and the grant really helped me settle in Lyon peacefully."
+      },
+      "t2": {
+        "text": "A smooth and transparent process from start to finish. The team managed all administrative aspects, allowing me to focus on my job search. I'm now working in Brussels!"
+      },
+      "t3": {
+        "text": "I highly recommend this program. The personalized support and valuable advice allowed me to achieve my dream of living and teaching in Switzerland. Thank you so much!"
+      },
+      "t4": {
+        "text": "The team was of great help in preparing my file and finding a place to live in Paris. The process was faster than expected and the grant helped me a lot financially."
+      },
+      "t5": {
+        "text": "A great experience! Everything was managed professionally and I was informed at every stage. I'm now working in a hospital in Antwerp and I'm very happy."
+      },
+      "t6": {
+        "text": "Impeccable service and fast results. In 5 months, I had my visa and was settled in Geneva. The program really offers what it promises. An opportunity not to be missed!"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "A question? Need more information? Our team is here to support you",
+    "info": {
+      "email": "Email",
+      "office": "Offices",
+      "hours": {
+        "title": "Opening Hours",
+        "week": "Monday - Friday: 9am - 6pm",
+        "sat": "Saturday: 10am - 2pm",
+        "sun": "Sunday: Closed"
+      }
+    },
+    "form": {
+      "title": "Start Your Procedure",
+      "name": "Full name *",
+      "email": "Email *",
+      "phone": "Phone *",
+      "country": "Desired country *",
+      "country_placeholder": "Select a country",
+      "countries": {
+        "fr": "France",
+        "be": "Belgium",
+        "ch": "Switzerland",
+        "undecided": "Not yet decided"
+      },
+      "profession": "Profession / Industry *",
+      "profession_placeholder": "Ex: Nurse, Engineer...",
+      "message": "Message *",
+      "message_placeholder": "Tell us about your project and your questions...",
+      "submit": "Send my request",
+      "submitting": "Submitting...",
+      "consent": "By submitting this form, you agree to be contacted by our team."
+    },
+    "messages": {
+      "success_title": "Message sent!",
+      "success_desc": "We will contact you within 24-48 hours.",
+      "error_title": "Error",
+      "validation_error": "Validation error",
+      "limit_error": "Limit reached",
+      "network_error": "Network error",
+      "network_desc": "Unable to contact function. Check your connection or function deployment."
+    }
+  },
+  "footer": {
+    "desc": "Your partner for a successful international career in Europe.",
+    "program": "Program",
+    "resources": "Resources",
+    "follow": "Follow us",
+    "rights": "© 2025 ProVisa. All rights reserved.",
+    "links": {
+      "legal": "Legal mentions",
+      "privacy": "Privacy policy",
+      "terms": "Terms of use"
+    }
+  }
+}

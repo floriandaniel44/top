@@ -13,28 +13,28 @@ import {
   Palette,
   FlaskConical
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const ProfilesSection = () => {
+  const { t } = useTranslation();
   const profiles = [
-    { icon: Stethoscope, title: "Médecins & Infirmiers", demand: "Très forte" },
-    { icon: Wrench, title: "Ingénieurs", demand: "Forte" },
-    { icon: GraduationCap, title: "Enseignants", demand: "Moyenne" },
-    { icon: Briefcase, title: "Gestionnaires", demand: "Moyenne" },
-    { icon: Heart, title: "Travailleurs Sociaux", demand: "Forte" },
-    { icon: Calculator, title: "Comptables", demand: "Moyenne" },
-    { icon: Building, title: "Architectes", demand: "Moyenne" },
-    { icon: ChefHat, title: "Chefs Cuisiniers", demand: "Moyenne" },
-    { icon: Truck, title: "Logisticiens", demand: "Forte" },
-    { icon: Palette, title: "Designers", demand: "Moyenne" },
-    { icon: FlaskConical, title: "Chercheurs", demand: "Forte" },
+    { icon: Stethoscope, title: t("profiles.list.docs"), demand: t("profiles.demand.very_high") },
+    { icon: Wrench, title: t("profiles.list.engineers"), demand: t("profiles.demand.high") },
+    { icon: GraduationCap, title: t("profiles.list.teachers"), demand: t("profiles.demand.medium") },
+    { icon: Briefcase, title: t("profiles.list.managers"), demand: t("profiles.demand.medium") },
+    { icon: Heart, title: t("profiles.list.social"), demand: t("profiles.demand.high") },
+    { icon: Calculator, title: t("profiles.list.accountants"), demand: t("profiles.demand.medium") },
+    { icon: Building, title: t("profiles.list.architects"), demand: t("profiles.demand.medium") },
+    { icon: ChefHat, title: t("profiles.list.chefs"), demand: t("profiles.demand.medium") },
+    { icon: Truck, title: t("profiles.list.logistics"), demand: t("profiles.demand.high") },
+    { icon: Palette, title: t("profiles.list.designers"), demand: t("profiles.demand.medium") },
+    { icon: FlaskConical, title: t("profiles.list.researchers"), demand: t("profiles.demand.high") },
   ];
 
   const getDemandColor = (demand: string) => {
-    switch (demand) {
-      case "Très forte": return "bg-accent text-accent-foreground";
-      case "Forte": return "bg-success text-success-foreground";
-      default: return "bg-primary/20 text-primary";
-    }
+    if (demand === t("profiles.demand.very_high")) return "bg-accent text-accent-foreground";
+    if (demand === t("profiles.demand.high")) return "bg-success text-success-foreground";
+    return "bg-primary/20 text-primary";
   };
 
   return (
@@ -42,11 +42,10 @@ const ProfilesSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Profils Concernés
+            {t("profiles.title")}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Le programme s'adresse aux professionnels qualifiés dans des secteurs à forte demande en Europe. 
-            Découvrez si votre profil est éligible.
+            {t("profiles.subtitle")}
           </p>
         </div>
 
@@ -73,16 +72,16 @@ const ProfilesSection = () => {
 
         <Card className="p-8 md:p-12 bg-gradient-to-br from-accent/10 to-primary/10 border-2">
           <h3 className="text-3xl font-bold mb-6 text-center text-foreground">
-            Critères d'Éligibilité
+            {t("profiles.eligibility.title")}
           </h3>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
-              "Diplôme ou certification professionnelle reconnu",
-              "Expérience professionnelle d'au moins 2 ans",
-              "Niveau de langue B1 minimum (français, anglais ou allemand)",
-              "Âge entre 21 et 45 ans",
-              "Casier judiciaire vierge",
-              "Motivation et projet professionnel clair"
+              t("profiles.eligibility.c1"),
+              t("profiles.eligibility.c2"),
+              t("profiles.eligibility.c3"),
+              t("profiles.eligibility.c4"),
+              t("profiles.eligibility.c5"),
+              t("profiles.eligibility.c6")
             ].map((criterion, index) => (
               <div key={index} className="flex items-start gap-3">
                 <div className="bg-accent rounded-full w-2 h-2 mt-2 flex-shrink-0" />
